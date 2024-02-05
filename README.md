@@ -1,2 +1,2 @@
-# konecte
-Repositorio para proyecto el integrador
+# Konect-e
+## Repositorio para proyecto integrador
