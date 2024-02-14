@@ -1,3 +1,106 @@
+/* fuente para los titutlos */
+.barlow-bold {
+    font-family: "Barlow", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  /* fuente para los textos */
+  .manrope {
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+  }
+
+
+  .header{
+    grid-area: header;
+    background-color: #A99D98;
+  }
+
+
+.nosotros{
+    text-align: center;
+    font-size: 2rem;
+    font-family: "Barlow";
+}
+
+
+.btnreturn{
+    text-align: right;
+
+}
+
+
+.btnmenu{
+
+}
+
+  
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+body{
+    min-height: 100%;
+}
+html{
+    height: 100%;
+}
+.grid-container >* {
+    text-align: center;
+    padding: 10px;
+
+}
+.fhead {
+    background-color: aquamarine;
+   grid-area: header;
+
+}
+
+.sideInfo {
+    background-color: red;
+    grid-area: side;
+    
+
+}
+.cardsDevelopers {
+    background-color: grey;
+    grid-area: cards;
+    
+}
+.DerechosR {
+    background-color: pink;
+    grid-area: footer;
+    
+}
+/*telefono*/
+.grid-container{
+    display: grid;
+    gap: 10px;
+    grid-template-areas:
+    "header"
+    "side"
+    "cards"
+    "footer"
+    ;
+}
+
+ /*Desktop*/
+ @media(min-width:900px){
+    .grid-container{
+        grid-template-columns: auto;
+        grid-template-areas: 
+        "header header header"
+        "side side cards"
+        "footer footer footer"
+        ;
+    }
+}
+
 #vision{
     background-color: #A99D98;
     color: white;
