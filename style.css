@@ -56,29 +56,36 @@ html{
 
 }
 .fhead {
-    background-color: aquamarine;
    grid-area: header;
 
 }
 
 .sideInfo {
-    background-color: red;
     grid-area: side;
-    
-
+    margin: 0.5rem;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    background-size: cover;
+    background-position: center;
+    transition: background-image 2s ease-in-out;
+}
+.sideInfo p{
+    font-size: 3rem;
+    max-width: 80%;
 }
 .cardsDevelopers {
     background-color: grey;
     grid-area: cards;
-    
+    margin-top: 0.5rem;
+    margin-right: 1rem;
 }
 .DerechosR {
-    background-color: pink;
     grid-area: footer;
-    
 }
 /*telefono*/
-.grid-container{
+@media(max-width:899px){
+.grid-container {
     display: grid;
     gap: 10px;
     grid-template-areas:
@@ -88,10 +95,33 @@ html{
     "footer"
     ;
 }
+.sideInfo p{
+    font-size: 1rem;
+    max-width: 80%;
+}
+.titleCards{
+    grid-area: titulo;
+}
+.cardsDevelopers{
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid ;
+    grid-template-columns: auto;
+
+    grid-template-areas: 
+    "titulo titulo"
+    "card1 card2"
+    "card3 card4"
+    "card5 card6"
+    ;
+}
+}
 
  /*Desktop*/
  @media(min-width:900px){
     .grid-container{
+        display: grid;
         grid-template-columns: auto;
         grid-template-areas: 
         "header header header"
@@ -101,13 +131,3 @@ html{
     }
 }
 
-#vision{
-    background-color: #A99D98;
-    color: white;
-    font-size: 4rem;
-    height: 40rem;
-    width: 68rem;
-    border: black;
-    text-align: center;
-    padding-top: 10px;
-}
