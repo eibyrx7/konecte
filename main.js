@@ -16,6 +16,8 @@ let btnValidar = document.getElementById("btnValidar");
 let txtDato = document.getElementById("txtDato");
 let divAlert = document.getElementById("divAlert");
 
+let inputEmail = document.getElementById("inputEmail");
+
 btnValidar.addEventListener("click", function(event){
     event.preventDefault();
 
@@ -27,4 +29,13 @@ btnValidar.addEventListener("click", function(event){
     }//else
     txtDato.focus();
 
+    let regex1 = new RegExp ("^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+    if (regex1.test(inputEmail.value)){
+        divAlert.innerHTML="";
+    } else {
+        divAlert.innerHTML = "Error en el campo de email"
+    }
+
+    
 });
+
