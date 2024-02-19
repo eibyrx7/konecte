@@ -11,3 +11,20 @@ document.addEventListener("DOMContentLoaded", function() {
     // Cambia la imagen de fondo cada 3 segundos (3000 milisegundos)
     setInterval(changeBackground, 5000);
 });
+
+let btnValidar = document.getElementById("btnValidar");
+let txtDato = document.getElementById("txtDato");
+let divAlert = document.getElementById("divAlert");
+
+btnValidar.addEventListener("click", function(event){
+    event.preventDefault();
+
+    let regex = new RegExp("^[a-z0]{3,15}$");
+    if (regex.test(txtDato.value)){
+        divAlert.innerHTML="";
+    } else {
+        divAlert.innerHTML="El nombre tiene un formato incorrecto";
+    }//else
+    txtDato.focus();
+
+});
