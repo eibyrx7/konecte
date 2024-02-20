@@ -83,6 +83,7 @@ html{
 .DerechosR {
     grid-area: footer;
 }
+
 /*telefono*/
 @media(max-width:899px){
 .grid-container {
