@@ -28,13 +28,32 @@ btnValidar.addEventListener("click", function(event){
         divAlert.innerHTML="El nombre tiene un formato incorrecto";
     }//else
     txtDato.focus();
+// ----------------Parte de Eduardo -----------------------//
+    // let regex1 = new RegExp (/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/);
+    // if (regex1.test(inputEmail.value)){
+    //     divAlert.innerHTML="";
+    // } else {
+    //     divAlert.innerHTML = "Error en el campo de email"
+    // }
+    // ----------------Parte de Eduardo -----------------------//
 
-    let regex1 = new RegExp ("^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
-    if (regex1.test(inputEmail.value)){
+    // function validarCantidad() {
+    //     if (txtTel.value.length == 10) {//validar que no tiene nada en el campo 
+    //         divAlert.innerHTML = ""
+    //         return true;
+    //     }else{
+    //         divAlert.innerHTML = "Ingresaste mal el telefono, verifica tu número";
+    //         return false;
+    //     };
+        
+    // }
+
+    let regex2 = new RegExp("^[0-9]{10}$");
+    if (regex2.test(txtTel.value)){
         divAlert.innerHTML="";
     } else {
-        divAlert.innerHTML = "Error en el campo de email"
-    }
+        divAlert.innerHTML="El Telefono tiene un formato incorrecto";
+    }//else
 
     
 });
