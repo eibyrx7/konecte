@@ -58,7 +58,8 @@ btnClear.addEventListener("click", function (event) {
 
 });
 
-emailjs.init("ySqvVO04Xv6vW7toD");
+
+
 
 document.getElementById('form', function(event) {
     event.preventDefault();
