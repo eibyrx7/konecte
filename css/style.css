@@ -13,11 +13,26 @@
     font-style: normal;
   }
 
+  a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+  }
 
+  a:hover{
+    color: #A99D98;
+}
   .header{
     grid-area: header;
-    background-color: #A99D98;
+    background-color: #DB435B;
   }
+
+  .navegacion{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  } 
+
 
 
 .nosotros{
@@ -29,11 +44,6 @@
 
 .btnreturn{
     text-align: right;
-
-}
-
-
-.btnmenu{
 
 }
 
@@ -85,7 +95,7 @@ html{
 }
 
 /*telefono*/
-@media(max-width:899px){
+@media(max-width:425px){
 .grid-container {
     display: grid;
     gap: 10px;
@@ -96,6 +106,13 @@ html{
     "footer"
     ;
 }
+
+
+.navegacion{
+    display: flex;
+    flex-direction: column;
+  } 
+
 .sideInfo p{
     font-size: 1rem;
     max-width: 80%;
