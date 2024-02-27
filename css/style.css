@@ -39,6 +39,7 @@
     text-align: center;
     font-size: 2rem;
     font-family: "Barlow";
+    marg
 }
 
 
@@ -149,3 +150,7 @@ html{
     }
 }
 
+.titul{
+    text-align: center;
+    margi
+}
