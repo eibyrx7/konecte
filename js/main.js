@@ -23,6 +23,12 @@ let txtMensaje = document.getElementById("txtMensaje");
 
 btnValidar.addEventListener("click", function (event) {
     event.preventDefault();
+    // alertValidacionesTexto.innerHTML = "";//limpia alerta al colocar dato correcto
+    // alertValidaciones.style.display = "none";//limpia alerta al colocar dato correcto
+    txtDato.value = "";//limpia campo (borrar contenido)
+    txtEmail.value = "";//limpia campo (borrar contenido)
+    txtTelefono.value = "";//limpia campo (borrar contenido)
+    txtMensaje.value = "";//limpia campo (borrar contenido)
 
     let regexNombre = /^[A-Za-z]{3,15}$/;
     let regexEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;

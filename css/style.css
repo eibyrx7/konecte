@@ -4,7 +4,6 @@
     font-weight: 700;
     font-style: normal;
   }
-
   /* fuente para los textos */
   .manrope {
     font-family: "Manrope", sans-serif;
@@ -150,7 +149,23 @@ html{
     }
 }
 
-.titul{
+
+#cardsfeed{
+    display:flex;
+    align-items: stretch;
+    align-self: center;
+    width: auto;
+    height: 150px;
+}
+
+
+.title-feed{
     text-align: center;
-    margi
+}
+
+.card{
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 25px;
+
 }
