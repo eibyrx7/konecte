@@ -20,16 +20,17 @@ let txtEmail = document.getElementById("txtEmail");
 let txtTelefono = document.getElementById("txtTelefono");
 let txtMensaje = document.getElementById("txtMensaje");
 
-
+divAlert.style.display = "none";
 btnValidar.addEventListener("click", function (event) {
     event.preventDefault();
 
     let regexNombre = /^[A-Za-z]{3,15}$/;
     let regexEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
-    let regexTelefono = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+    let regexTelefono = /^[1-9][0-9]*$/;
     let regexMensaje = /^.{1,200}$/;
 
     let errorMessage = ""; // Acumulador de mensajes de error
+
 
     if (!regexNombre.test(txtDato.value)) {
         errorMessage += "El nombre tiene un formato incorrecto. ";
@@ -47,6 +48,11 @@ btnValidar.addEventListener("click", function (event) {
     }
 
     divAlert.innerHTML = errorMessage; // Asigna el mensaje acumulado
+    if (errorMessage === "") {
+        divAlert.style.display = "none";
+    } else {
+        divAlert.style.display = "block"; // Muestra la alerta si hay errores
+    }
 });
 
 btnClear.addEventListener("click", function (event) {
@@ -55,7 +61,7 @@ btnClear.addEventListener("click", function (event) {
     txtEmail.value = "";
     txtTelefono.value = "";
     txtMensaje.value = "";
-
+    divAlert.style.display = "none";
 });
 
 
@@ -79,3 +85,39 @@ document.getElementById('form', function(event) {
             alert(JSON.stringify(err));
         });
 });
+
+
+function getData(){
+    let promesa = fetch ("https://fakestoreapi.com/products", 
+                {method:"GET"});
+
+    promesa.then((response)=> {
+        response.json().then( (data)=> {createCards(data)})
+        .catch((err)=> {console.log("Ocurrio un error en la solicitud", err)});
+    })
+    .catch((err)=> {console.log("Ocurrio un error en la solicitud", err)});
+}//getData
+
+let mainProds = document.getElementById("mainProds");
+function createCards(prods){
+    prods.forEach(prod => {
+        mainProds.insertAdjacentHTML("beforeend",`
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="${prod.image}" class="img-fluid rounded-start" alt="${prod.description}">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">${prod.title}</h5>
+                  <p class="card-text">${prod.category}</p>
+                  <p class="card-text"><small class="text-muted">${prod.description}</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          `);
+    });
+}//createCards
+getData();
+
