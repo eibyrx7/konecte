@@ -14,10 +14,10 @@
 <header>
     <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
         <div class="p-4 navegacion" style="background-color: #DB453B;">
-            <a href="/feed.html" target="_blank">Feed</a>
-            <a href="/CreaTuAnuncio.html"target="_blank">Crea tu anuncio </a>
-            <a href="Contacto.html" target="_blank">Contacto</a>
-            <a href="index.html" target="_blank">Nosotros</a>
+            <a href="/feed.html">Feed</a>
+            <a href="/CreaTuAnuncio.html">Crea tu anuncio </a>
+            <a href="Contacto.html">Contacto</a>
+            <a href="nosotros.html">Nosotros</a>
         </div>
       </div>
       <nav class="navbar navbar-dark" style="background-color: #DB453B;">
@@ -33,15 +33,75 @@
         <h1>Aqui va el index</h1>
     </main>
     <article>
+      <div>
+        <form class="row g-3 needs-validation" novalidate id="myForm">
+    
+            <div class="col-md-4">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Nombre completo" aria-label="Username" autofocus id="txtDato">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Domicilio" aria-label="Username" id="txtDomicilio">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Teléfono" aria-label="Username" id="txtTelefono">
+                </div>
+     
+                <!-- Menu colapsable -->
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupSelect01">Oficio</label>
+                    <select class="form-select" id="inputGroupSelect01">
+                    <option selected id="elegir">Elegir</option>
+                    <option value="1">Plomería</option>
+                    <option value="2">Albañilería</option>
+                    <option value="3">Carpintería</option>
+                    <option value="4">Sastrería</option>
+                    <option value="5">Electricista</option>
+                    <option value="6">Personal de limpieza</option>
+                    <option value="7">Herrería</option>
+                    <option value="8">Planchaduría</option>
+                    <option value="9">Pintor</option>
+                    <option value="10">Cerrajero</option>
+                    <option value="10">Otros</option>
+                    </select>
+                </div>
+                <!-- Carga de archivos -->
+                        <h5>Sube tu identificación</h5>
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="inputIdentificacion">
+                            <!-- <label class="input-group-text" for="inputGroupFile02">Upload</label> -->
+                        </div>
+                        <h5>Sube tu foto</h5>
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="inputFoto">
+                            <!-- <label class="input-group-text" for="inputGroupFile02">Upload</label> -->
+                        </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit" id="btnValidar">Submit</button>
+            </div>
+        </form>
+    </div>
 
     </article>
     <footer>
     
     </footer>
+    
+    
+    
+    
+    
+   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="./js/main.js" defer></script>
-
     
 </body>
+
+
+
+
+
 
 </html>

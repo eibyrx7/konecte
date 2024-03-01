@@ -27,7 +27,7 @@ btnValidar.addEventListener("click", function (event) {
 
     let regexNombre = /^[A-Za-z]{3,15}$/;
     let regexEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
-    let regexTelefono = /^[1-9]\d{9}$/;
+    let regexTelefono = /^[1-9][0-9]*$/;
     let regexMensaje = /^.{1,200}$/;
 
     let errorMessage = ""; // Acumulador de mensajes de error
@@ -62,9 +62,7 @@ btnClear.addEventListener("click", function (event) {
     txtEmail.value = "";
     txtTelefono.value = "";
     txtMensaje.value = "";
-
     divAlert.style.display = "none";
-
 });
 
 
@@ -82,16 +80,13 @@ document.addEventListener('DOMContentLoaded', function() {
   
       emailjs.sendForm(serviceID, templateID, this)
         .then(() => {
-            btnValidar.value = 'Send Email';
-          alert('¡Envío con exito!');
-        })
-        .catch((err) => {
-            btnValidar.value = 'Send Email';
-          alert(JSON.stringify(err));
+            btn.value = 'Send Email';
+            alert('Sent!');
+        }, (err) => {
+            btn.value = 'Send Email';
+            alert(JSON.stringify(err));
         });
-    });
-  });
-  
+})});
 
 
 function getData(){
@@ -128,3 +123,81 @@ function createCards(prods){
 }//createCards
 getData();
 
+
+
+
+
+// Formulario
+datos = new Array();
+let isValid = true;
+let contador = 0;
+
+let btnValida = document.getElementById("btnValida");
+let nombreCompleto = document.getElementById("txtDato");
+let domicilio = document.getElementById("txtDomicilio");
+let telefono = document.getElementById("txtTelefono");
+let oficio = document.getElementById("selectOficio");
+let identificacion = document.getElementById("inputIdentificacion").files[0].name;
+let foto = document.getElementById("inputFoto").files[0].name;
+
+
+
+// Agregar un evento de escucha para el envío del formulario
+btnValida.addEventListener("click", function(event){
+    // Evitar que el formulario se envíe
+    event.preventDefault();
+
+    if (isValid) {
+        contador++;
+
+        //JSON arreglo de objetos
+            let elemento = `{"id" : ${contador},
+                            "nombre" : "${nombreCompleto.value}",
+                            "domicilio" : ${domicilio.value},
+                            "telefono" : ${telefono.value},
+                            "oficio" : ${oficio.value},
+                            "identificacion" : ${identificacion.value},
+                            "foto" : ${foto.value},
+                    }`;
+
+
+
+            datos.push(JSON.parse(elemento));
+            console.log(datos);
+            localStorage.setItem("datos", JSON.stringify(datos));
+
+            
+            // Limpiar los campos del formulario
+            form.reset();
+
+            // Confirmar al usuario que se guardó la información
+            alert('Información guardada correctamente');
+
+        }
+
+});
+
+let row = document.getElementById("row");
+let btn = document.getElementById("btn");
+
+document.addEventListener("click", function (event) {
+    let txtDato = document.getElementById("txtDato");
+    let txtDomicilio = document.getElementById("txtDomicilio");
+    let txtTelefono = document.getElementById("txtTelefono");
+    let elegir = document.getElementById("elegir");
+    let inputIdentificacion = document.getElementById("inputIdentificacion");
+    let inputFoto = document.getElementById("inputFoto");
+
+    txtDato = txtDato.value;
+    localStorage.setItem("txtDato", txtDato);
+    txtDomicilio = txtDomicilio.value;
+    localStorage.setItem("txtDomicilio", txtDomicilio);
+    txtTelefono = txtTelefono.value;
+    localStorage.setItem("txtTelefono", txtTelefono);
+    elegir = elegir.value;
+    localStorage.setItem("elegir", elegir);
+    inputIdentificacion = inputIdentificacion.value;
+    localStorage.setItem("inputIdentificacion", inputIdentificacion);
+    inputFoto = inputFoto.value;
+    localStorage.setItem("inputFoto", inputFoto);
+});
