@@ -19,40 +19,41 @@ let txtDato = document.getElementById("txtDato");
 let txtEmail = document.getElementById("txtEmail");
 let txtTelefono = document.getElementById("txtTelefono");
 let txtMensaje = document.getElementById("txtMensaje");
+let form = document.getElementById('form');
 
-
+divAlert.style.display = "none";
 btnValidar.addEventListener("click", function (event) {
     event.preventDefault();
-    // alertValidacionesTexto.innerHTML = "";//limpia alerta al colocar dato correcto
-    // alertValidaciones.style.display = "none";//limpia alerta al colocar dato correcto
-    txtDato.value = "";//limpia campo (borrar contenido)
-    txtEmail.value = "";//limpia campo (borrar contenido)
-    txtTelefono.value = "";//limpia campo (borrar contenido)
-    txtMensaje.value = "";//limpia campo (borrar contenido)
 
     let regexNombre = /^[A-Za-z]{3,15}$/;
     let regexEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
-    let regexTelefono = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+    let regexTelefono = /^[1-9]\d{9}$/;
     let regexMensaje = /^.{1,200}$/;
 
     let errorMessage = ""; // Acumulador de mensajes de error
 
+
     if (!regexNombre.test(txtDato.value)) {
-        errorMessage += "El nombre tiene un formato incorrecto. ";
+        errorMessage += "El nombre tiene un formato incorrecto. </br>";
     }
 
     if (!regexEmail.test(txtEmail.value)) {
-        errorMessage += "El email tiene un formato incorrecto. ";
+        errorMessage += "El email tiene un formato incorrecto. </br>";
     }
 
     if (!regexTelefono.test(txtTelefono.value)) {
-        errorMessage += "El teléfono tiene un formato incorrecto.";
+        errorMessage += "El teléfono tiene un formato incorrecto. </br>";
     }
     if (!regexMensaje.test(txtMensaje.value)) {
         errorMessage += "El mensaje tiene un formato incorrecto.";
     }
 
     divAlert.innerHTML = errorMessage; // Asigna el mensaje acumulado
+    if (errorMessage === "") {
+        divAlert.style.display = "none";
+    } else {
+        divAlert.style.display = "block"; // Muestra la alerta si hay errores
+    }
 });
 
 btnClear.addEventListener("click", function (event) {
@@ -62,29 +63,35 @@ btnClear.addEventListener("click", function (event) {
     txtTelefono.value = "";
     txtMensaje.value = "";
 
+    divAlert.style.display = "none";
+
 });
 
 
 
 
-document.getElementById('form', function(event) {
-    event.preventDefault();
-
-    const btn = document.getElementById('btnValidar');
-    btn.value = 'Sending...';
-
-    const serviceID = 'service_tuServiceID'; // Reemplaza con tu Service ID
-    const templateID = 'template_tuTemplateID'; // Reemplaza con tu Template ID
-
-    emailjs.sendForm(serviceID, templateID, this)
+document.addEventListener('DOMContentLoaded', function() {
+    
+    form.addEventListener('sumit', function(event) {
+      event.preventDefault();
+  
+      btnValidar.value = 'Sending...';
+  
+      const serviceID = 'service_9a9642q';
+      const templateID = 'template_i4ayw4d';
+  
+      emailjs.sendForm(serviceID, templateID, this)
         .then(() => {
-            btn.value = 'Send Email';
-            alert('Sent!');
-        }, (err) => {
-            btn.value = 'Send Email';
-            alert(JSON.stringify(err));
+            btnValidar.value = 'Send Email';
+          alert('¡Envío con exito!');
+        })
+        .catch((err) => {
+            btnValidar.value = 'Send Email';
+          alert(JSON.stringify(err));
         });
-});
+    });
+  });
+  
 
 
 function getData(){

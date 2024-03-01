@@ -32,42 +32,46 @@
 
 <h1>Contacto</h1>
   <!--Bootstrap-->
-  <form>
+  <form id="form">
     <div class="alertas"><!--Nombre-->
       <div class="alert alert-danger" role="alert" id="divAlert">
       </div>
 
-      <div class="mb-3">
+      <div class="mb-3 field">
         <label for="txtDato" class="form-label"><strong>Nombre</strong></label>
-        <input type="text" class="form-control" id="txtDato" style="width: 50%; border: 2px solid black;">
+        <input type="text" name="emailjs_name" class="form-control" id="txtDato" style="width: 50%; border: 2px solid black;">
       </div>
 
-      <div class="mb-3">
+      <div class="mb-3 field">
         <label for="txtEmail" class="form-label"><strong>Email</strong></label>
-        <input type="email" class="form-control" id="txtEmail" style="width: 50%; border: 2px solid black;">
+        <input type="email" name="emailjs_name" class="form-control" id="txtEmail" style="width: 50%; border: 2px solid black;">
       </div>
 
-      <div class="mb-3">
+      <div class="mb-3 field">
         <label for="txtTelefono" class="form-label"><strong>Teléfono</strong></label>
-        <input type="tel" class="form-control" id="txtTelefono" style="width: 50%; border: 2px solid black;">
+        <input type="tel" name="emailjs_name" class="form-control" id="txtTelefono" style="width: 50%; border: 2px solid black;">
       </div>
 
-      <div class="mb-3">
+      <div class="mb-3 field">
         <label for="txtMensaje" class="form-label"><strong>Mensaje</strong></label>
-        <input type="email" class="form-control" id="txtMensaje" style="border: 2px solid black; align-items: center;">
+        <input type="text" name="emailjs_name" class="form-control" id="txtMensaje" style="border: 2px solid black; align-items: center;">
       </div>
-
-      </br>
-
-      <button id="btnValidar" class="btn btn-primary btn-lg btn-block" type="button">Enviar</button>
-      <button id="btnClear" class="btn btn-primary btn-lg btn-block" type="button">Limpiar todo</button>
     </div>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <button id="btnValidar" value="Send Email" class="btn btn-primary btn-lg btn-block form" type="submit">Enviar</button>
 
+    <input type="submit" id="btnValidar" value="Enviar" >
+    <button id="btnClear" class="btn btn-primary btn-lg btn-block" type="button">Limpiar todo</button>
+    </form>
+    
+    <script type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
     <script type="text/javascript">
       emailjs.init('ySqvVO04Xv6vW7toD')
     </script>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"></script>
