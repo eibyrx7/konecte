@@ -177,27 +177,3 @@ btnValida.addEventListener("click", function(event){
 
 });
 
-let row = document.getElementById("row");
-let btn = document.getElementById("btn");
-
-document.addEventListener("click", function (event) {
-    let txtDato = document.getElementById("txtDato");
-    let txtDomicilio = document.getElementById("txtDomicilio");
-    let txtTelefono = document.getElementById("txtTelefono");
-    let elegir = document.getElementById("elegir");
-    let inputIdentificacion = document.getElementById("inputIdentificacion");
-    let inputFoto = document.getElementById("inputFoto");
-
-    txtDato = txtDato.value;
-    localStorage.setItem("txtDato", txtDato);
-    txtDomicilio = txtDomicilio.value;
-    localStorage.setItem("txtDomicilio", txtDomicilio);
-    txtTelefono = txtTelefono.value;
-    localStorage.setItem("txtTelefono", txtTelefono);
-    elegir = elegir.value;
-    localStorage.setItem("elegir", elegir);
-    inputIdentificacion = inputIdentificacion.value;
-    localStorage.setItem("inputIdentificacion", inputIdentificacion);
-    inputFoto = inputFoto.value;
-    localStorage.setItem("inputFoto", inputFoto);
-});
