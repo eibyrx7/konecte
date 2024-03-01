@@ -121,3 +121,56 @@ function createCards(prods){
 }//createCards
 getData();
 
+
+
+
+
+// Formulario
+datos = new Array();
+let isValid = true;
+let contador = 0;
+
+let btnValida = document.getElementById("btnValida");
+let nombreCompleto = document.getElementById("txtDato");
+let domicilio = document.getElementById("txtDomicilio");
+let telefono = document.getElementById("txtTelefono");
+let oficio = document.getElementById("selectOficio");
+let identificacion = document.getElementById("inputIdentificacion").files[0].name;
+let foto = document.getElementById("inputFoto").files[0].name;
+
+
+
+// Agregar un evento de escucha para el envío del formulario
+btnValida.addEventListener("click", function(event){
+    // Evitar que el formulario se envíe
+    event.preventDefault();
+
+    if (isValid) {
+        contador++;
+
+        //JSON arreglo de objetos
+            let elemento = `{"id" : ${contador},
+                            "nombre" : "${nombreCompleto.value}",
+                            "domicilio" : ${domicilio.value},
+                            "telefono" : ${telefono.value},
+                            "oficio" : ${oficio.value},
+                            "identificacion" : ${identificacion.value},
+                            "foto" : ${foto.value},
+                    }`;
+
+
+
+            datos.push(JSON.parse(elemento));
+            console.log(datos);
+            localStorage.setItem("datos", JSON.stringify(datos));
+
+            
+            // Limpiar los campos del formulario
+            form.reset();
+
+            // Confirmar al usuario que se guardó la información
+            alert('Información guardada correctamente');
+
+        }
+
+});
