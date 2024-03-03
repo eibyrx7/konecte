@@ -1,0 +1,169 @@
+/* fuente para los titutlos */
+.barlow-bold {
+    font-family: "Barlow", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  /* fuente para los textos */
+  .manrope {
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+  }
+
+  a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+  }
+
+  a:hover{
+    color: #A99D98;
+}
+  .header{
+    grid-area: header;
+    background-color: #DB435B;
+  }
+
+  .navegacion{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  } 
+
+
+
+.nosotros{
+    text-align: center;
+    font-size: 2rem;
+    font-family: "Barlow";
+}
+
+
+.btnreturn{
+    text-align: right;
+}
+
+  
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+body{
+    min-height: 100%;
+}
+html{
+    height: 100%;
+}
+.grid-container >* {
+    text-align: center;
+    padding: 10px;
+
+}
+.fhead {
+   grid-area: header;
+
+}
+
+.sideInfo {
+    grid-area: side;
+    margin: 0.5rem;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    background-size: cover;
+    background-position: center;
+    transition: background-image 2s ease-in-out;
+}
+.sideInfo p{
+    font-size: 3rem;
+    max-width: 80%;
+}
+.cardsDevelopers {
+    background-color: grey;
+    grid-area: cards;
+    margin-top: 0.5rem;
+    margin-right: 1rem;
+}
+.DerechosR {
+    grid-area: footer;
+}
+
+/*telefono*/
+@media(max-width:425px){
+.grid-container {
+    display: grid;
+    gap: 10px;
+    grid-template-areas:
+    "header"
+    "side"
+    "cards"
+    "footer"
+    ;
+}
+
+
+.navegacion{
+    display: flex;
+    flex-direction: column;
+  } 
+
+.sideInfo p{
+    font-size: 1rem;
+    max-width: 80%;
+}
+.titleCards{
+    grid-area: titulo;
+}
+.cardsDevelopers{
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid ;
+    grid-template-columns: auto;
+
+    grid-template-areas: 
+    "titulo titulo"
+    "card1 card2"
+    "card3 card4"
+    "card5 card6"
+    ;
+}
+}
+
+ /*Desktop*/
+ @media(min-width:900px){
+    .grid-container{
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-areas: 
+        "header header header"
+        "side side cards"
+        "footer footer footer"
+        ;
+    }
+}
+
+
+#cardsfeed{
+    display:flex;
+    align-items: stretch;
+    align-self: center;
+    width: auto;
+    height: 150px;
+}
+
+
+.title-feed{
+    text-align: center;
+}
+
+.card{
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 25px;
+
+}
