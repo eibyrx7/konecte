@@ -1,3 +1,4 @@
+//local storage
 let row = document.getElementById("row");
 let btn = document.getElementById("btn");
 
