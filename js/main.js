@@ -12,13 +12,3 @@ document.addEventListener("DOMContentLoaded", function () {
     // Cambia la imagen de fondo cada 3 segundos (3000 milisegundos)
     setInterval(changeBackground, 5000);
 });
-
-
-
-
-
-
-
-
-
-
