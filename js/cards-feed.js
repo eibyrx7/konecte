@@ -1,10 +1,11 @@
 function addItem(item){
   const itemHTML = '<div class="card" style="width: 18rem;">\n' +
+      '        <h5 class="card-title">'+item.name+'</h5>\n' +
       '    <img src="'+item.img +'" class="card-img-top" alt="image" id="cardsfeed">\n' +
       '    <div class="card-body">\n' +
       '        <h5 class="card-title">'+item.name+'</h5>\n' +
       '        <p class="card-text">'+item.description+'</p>\n' +
-      '        <a href="#" class="btn btn-primary">Add</a>\n' +
+      '        <button type="button" class="btn btn-danger">Encuéntralo</button>\n' +
       '    </div>\n' +
       '</div>\n' +
       '<br/>';
@@ -14,45 +15,45 @@ function addItem(item){
 
 
 addItem({'name':'Plomería',
-    'img':'https://i.pinimg.com/originals/de/5e/dd/de5edde86bfecee8e7320629a2cf95d9.jpg',
-    'description':''})
+    'img':'./sourcesFeed/plomero.jpg',
+    'description':'Nuestros expertos en plomería se encargan de resolver cualquier problema relacionado con tuberías, grifos, desagües y sistemas de agua. Confía en nuestros profesionales para soluciones rápidas y efectivas.'})
 
 addItem({'name':'Albañilería',
-    'img':'https://st4.depositphotos.com/12785820/21327/v/450/depositphotos_213274828-stock-illustration-man-builder-trowel-his-hand.jpg',
-    'description':''})
+    'img':'./sourcesFeed/albañil.jpg',
+    'description':'Los albañiles en nuestra plataforma son especialistas en construcción y reparación de estructuras de todo tipo. Desde pequeñas reparaciones hasta proyectos de construcción más grandes.'})
 
 addItem({'name':'Carpintería',
-    'img':'https://image.freepik.com/vector-gratis/carpinteros-taller-herramientas-carpinteria_8071-1228.jpg',
-    'description':''})
+    'img':'./sourcesFeed/carpintero.jpg',
+    'description':'¿Necesitas muebles a medida o reparaciones de carpintería? Nuestros carpinteros están listos para crear piezas únicas y solucionar cualquier problema relacionado con la madera'})
 
 addItem({'name':'Sastrería',
-    'img':'https://media.istockphoto.com/id/1368945587/es/vector/hombre-diseñador-de-moda-o-sastre-con-hilo-y-aguja-ajuste-de-ropa-modelo-de-prenda-en.jpg?s=612x612&w=0&k=20&c=Dt4hNoR2X_k-LUS3SuU0o3Y-HYkgdo3hUJrNocT2ywM=',
-    'description':''})
+    'img':'./sourcesFeed/costura.jpg',
+    'description':'Los sastres en nuestra plataforma son maestros en el arte de la confección y la reparación de prendas. Desde ajustes simples hasta creaciones personalizadas, confía en nuestros profesionales para dar vida a tus ideas.'})
 
 addItem({'name':'Electricista',
-    'img':'./resources/electricista.png',
-    'description':''})
+    'img':'./sourcesFeed/electricoC.jpg',
+    'description':'¿Problemas eléctricos en casa o en tu negocio? Nuestros electricistas están capacitados para manejar cualquier tipo de instalación, reparación o mantenimiento eléctrico.'})
 
 addItem({'name':'Personal de Limpieza',
-    'img':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXVla_MLLpCC0dOz6hXy27wMjbAi9dh9llVA&s',
-    'description':''})
+    'img':'./sourcesFeed/limpieza.jpg',
+    'description':'Nuestro equipo de personal de limpieza se encarga de mantener tus espacios impecables y ordenados. Desde hogares hasta oficinas, nuestros profesionales realizan limpiezas a fondo y personalizadas según tus necesidades'})
 
 addItem({'name':'Herrería',
-    'img':'https://cdn-icons-png.flaticon.com/512/7551/7551430.png',
-    'description':''})
+    'img':'./sourcesFeed/herrero.jpg',
+    'description':'Nuestros herreros son artesanos expertos en trabajar el metal con precisión y creatividad. Desde diseños personalizados hasta reparaciones de hierro forjado, confía en nuestros profesionales para dar forma a tus ideas en metal con habilidad y destreza.'})
 
 addItem({'name':'Planchaduría',
-    'img':'https://2.bp.blogspot.com/-0RFrYvlzb0w/W-jWMLsuKlI/AAAAAAAI2Gg/TM0v5L5YDbsHL6Qzvp40ax4-HnjYxRt6wCLcBGAs/s1600/307af861a84fe7f51b6e53f9e0911799.jpg',
-    'description':''})
+    'img':'./sourcesFeed/plancharB.jpg',
+    'description':'Nuestro equipo de profesionales se dedica con pasión y precisión al arte del planchado de ropa. Con años de experiencia y un ojo para el detalle, nuestros masters en planchado se dedican a que cada prenda que pasa por sus manos queden impecables y listas para lucir.'})
 
 addItem({'name':'Pintor',
-    'img':'https://i.pinimg.com/originals/da/a6/52/daa652ac99b274fdb2b5d32b92c54b62.jpg',
-    'description':''})
+    'img':'./sourcesFeed/pintor.jpg',
+    'description':'¿Buscas darle un nuevo aspecto a tu hogar? Nuestros pintores de casas están listos para transformar tus espacios con colores vibrantes y acabados de alta calidad. Confía en nuestros expertos para un trabajo impecable que resalte la belleza de tu hogar.'})
 
 addItem({'name':'Cerrajero',
-    'img':'https://st.depositphotos.com/1006018/5162/v/450/depositphotos_51621539-stock-illustration-locksmith-carry-key-shield-retro.jpg',
-    'description':''})
+    'img':'./sourcesFeed/cerrajero2.jpg',
+    'description':'La seguridad de tu hogar o negocio es nuestra prioridad. Nuestros cerrajeros están capacitados para proporcionar soluciones rápidas y confiables para problemas de cerraduras, llaves y sistemas de seguridad. Confía en nuestros profesionales para proteger lo que más valoras'})
 
 addItem({'name':'Otros',
-    'img':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7bOfq47WJH95lxautfwy8DeB66IMKVqVSHg&s',
-    'description':''})
+    'img':'./sourcesFeed/otros.jpg',
+    'description':'Te invitamos a explorar un mundo de habilidades únicas y profesionales especializados que destacan por su creatividad y experiencia fuera de lo común. Desde artesanos tradicionales hasta expertos en diversos oficios'})
