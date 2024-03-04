@@ -1,0 +1,90 @@
+.navegar {
+    background-color: #DB435B;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.navegar .logot {
+    cursor: pointer;
+}
+.navegar .logot img {
+    width: 25%;
+    transition: all, 0.3s;
+}
+
+.navegar .logot img:hover {
+    transform: scale(1.2);
+
+}
+
+body {
+    background-color: rgb(242, 242, 234);
+}
+
+#VistaPrincipal {
+    background-image: url("../BankImages/machine-2691439_1920.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment:local;
+    padding: 6em;
+    color: white;
+
+    
+}
+#cardsfeed{
+    display:flex;
+    align-items: stretch;
+    align-self: center;
+    width: auto;
+    height: 190px;
+}
+
+
+.title-feed{
+   text-align: right;
+   font-family: "Manrope", sans-serif;
+   
+
+}
+
+.card{
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    position: relative;
+}
+.card:hover .card-body {
+    display: block;
+}
+
+.card-body {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0; 
+    right: 0;
+    background-color: rgba(0,0,0,.7);
+    text-align: center;
+    padding: 15px;
+    font-size: 12px;
+    color: white;
+}
+.card-title {
+    text-align: center;
+}
+
+
+@media(max-width:425px){
+    .grid-container {
+        display: grid;
+        gap: 10px;
+        grid-template-areas:
+        "header"
+        "side"
+        "cards"
+        "footer"
+        ;
+    }
+}

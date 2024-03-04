@@ -1,0 +1,27 @@
+.navegar {
+    background-color: #DB435B;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.navegar .logot {
+    cursor: pointer;
+}
+.navegar .logot img {
+    width: 25%;
+    transition: all, 0.3s;
+}
+
+.navegar .logot img:hover {
+    transform: scale(1.2);
+
+}
+
+body {
+    background-color: rgb(242, 242, 234);
+    text-align: center;
+}
+
+ 
+
+

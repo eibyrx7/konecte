@@ -146,24 +146,3 @@ html{
         ;
     }
 }
-
-
-#cardsfeed{
-    display:flex;
-    align-items: stretch;
-    align-self: center;
-    width: auto;
-    height: 150px;
-}
-
-
-.title-feed{
-    text-align: center;
-}
-
-.card{
-    margin: auto;
-    margin-top: 10px;
-    margin-bottom: 25px;
-
-}
