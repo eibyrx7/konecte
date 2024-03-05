@@ -20,7 +20,14 @@
 body {
     background-color: rgb(242, 242, 234);
     text-align: center;
+    background-image: none;
 }
+
+.container{
+    align-items: center;
+   
+}
+
 
  
 
