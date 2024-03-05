@@ -22,7 +22,7 @@ body,html {
 }
 
 .PrincipalContainer {
-    background-image: url("../BankImages/worker-5736096_1920.jpg");
+    background-image: url("..//sourcesFeed/sastre.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -35,6 +35,8 @@ body,html {
     display: flex;
     flex-direction: column;
     align-items: center;
+    opacity: .8;
+
     
 }
 
@@ -48,6 +50,7 @@ body,html {
     width: 100%; 
     opacity: .8;
     text-align: center;
+    
 }
 
 h1 {
