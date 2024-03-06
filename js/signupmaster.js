@@ -11,7 +11,7 @@ let inputFoto = document.getElementById("inputFoto");
 
 // Ocultar el div de alerta al principio
 divAlert.style.display = "none";
-
+divAlert2.style.display = "none";
 //funcion de limpiar campos
 function limpiarCampos() {
     txtnombre.value = "";
@@ -129,7 +129,15 @@ btnValidar.addEventListener("click", function (event) {
 
 // Función para guardar el usuario en el almacenamiento local
 function guardarUsuarioEnLocalStorage(usuario) {
-    let usuariosGuardados = JSON.parse(localStorage.getItem('usuarios')) || [];
+    let usuariosGuardados = JSON.parse(localStorage.getItem('usuariosMaster')) || [];
     usuariosGuardados.push(usuario);
-    localStorage.setItem('usuarios', JSON.stringify(usuariosGuardados));
+    localStorage.setItem('usuariosMaster', JSON.stringify(usuariosGuardados));
+
+    // Despachar evento personalizado para indicar que se ha agregado un nuevo usuario
+    const eventoUsuarioAgregado = new Event('usuarioAgregado');
+    document.dispatchEvent(eventoUsuarioAgregado);
 }
+
+
+    
+

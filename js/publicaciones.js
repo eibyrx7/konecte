@@ -1,39 +1,67 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Obtener los usuarios del localStorage
-    let usuariosGuardados = JSON.parse(localStorage.getItem('usuarios')) || [];
-    let datosUsuario = document.getElementById("datosUsuario");
+    function actualizarUsuarios() {
+        // Obtener los usuarios del localStorage
+        let usuariosGuardados = JSON.parse(localStorage.getItem('usuariosMaster')) || [];
+        let datosUsuario = document.getElementById("datosUsuario");
 
-    // Recorrer los usuarios y crear una tarjeta para cada uno
-    usuariosGuardados.forEach(function(usuario) {
-        // Crear elementos HTML para la tarjeta
-        let card = document.createElement("div");
-        card.classList.add("card", "text-bg-primary", "mb-3");
-        card.style.maxWidth = "18rem";
+        // Limpiar la lista de usuarios antes de actualizarla
+        datosUsuario.innerHTML = '';
 
-        let cardHeader = document.createElement("div");
-        cardHeader.classList.add("card-header");
-        cardHeader.textContent = "Usuario";
+        // Recorrer los usuarios y crear una tarjeta para cada uno
+        usuariosGuardados.forEach(function(usuario) {
+            // Filtrar por dirección si se ha ingresado una en el campo de búsqueda
+            let direccionBuscada = document.getElementById("inputDireccion").value.trim().toLowerCase();
+            if (direccionBuscada !== '' && !usuario.domicilio.toLowerCase().includes(direccionBuscada)) {
+                return; // Saltar a la siguiente iteración si la dirección no coincide
+            }
 
-        let cardBody = document.createElement("div");
-        cardBody.classList.add("card-body");
+            // Crear la estructura de la tarjeta
+            let card = document.createElement("div");
+            card.classList.add("card", "mb-3");
 
-        let cardTitle = document.createElement("h5");
-        cardTitle.classList.add("card-title");
-        cardTitle.textContent = usuario.nombre;
+            let row = document.createElement("div");
+            row.classList.add("row", "g-0");
 
-        let cardText = document.createElement("p");
-        cardText.classList.add("card-text");
-        cardText.textContent = `Domicilio: ${usuario.domicilio}, Teléfono: ${usuario.telefono}, Email: ${usuario.email}, Oficio: ${usuario.oficio}`;
+            let colImg = document.createElement("div");
+            colImg.classList.add("col-md-4");
 
-        // Agregar los elementos al cuerpo de la tarjeta
-        cardBody.appendChild(cardTitle);
-        cardBody.appendChild(cardText);
+            let img = document.createElement("img");
+            img.src = usuario.foto; // Asignar la ruta de la imagen del usuario
+            img.classList.add("img-fluid", "rounded-start");
+            img.alt = "Imagen del usuario";
 
-        // Agregar el cuerpo y encabezado a la tarjeta
-        card.appendChild(cardHeader);
-        card.appendChild(cardBody);
+            let colBody = document.createElement("div");
+            colBody.classList.add("col-md-8");
 
-        // Agregar la tarjeta al contenedor de datos
-        datosUsuario.appendChild(card);
-    });
+            let cardBody = document.createElement("div");
+            cardBody.classList.add("card-body");
+
+            let cardTitle = document.createElement("h5");
+            cardTitle.classList.add("card-title");
+            cardTitle.textContent = usuario.nombre;
+
+            let cardText = document.createElement("p");
+            cardText.classList.add("card-text");
+            cardText.textContent = `Domicilio: ${usuario.domicilio}, Teléfono: ${usuario.telefono}, Email: ${usuario.email}, Oficio: ${usuario.oficio}`;
+
+            // Agregar elementos a la estructura de la tarjeta
+            colImg.appendChild(img);
+            colBody.appendChild(cardBody);
+            cardBody.appendChild(cardTitle);
+            cardBody.appendChild(cardText);
+            row.appendChild(colImg);
+            row.appendChild(colBody);
+            card.appendChild(row);
+
+            // Agregar la tarjeta al contenedor de datos
+            datosUsuario.appendChild(card);
+        });
+    }
+
+    // Actualizar usuarios cuando se agrega un nuevo usuario o se realiza una búsqueda
+    document.addEventListener('usuarioAgregado', actualizarUsuarios);
+    document.getElementById("inputDireccion").addEventListener('input', actualizarUsuarios);
+
+    // Llamar a la función de actualización inicialmente
+    actualizarUsuarios();
 });
