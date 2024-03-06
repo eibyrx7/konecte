@@ -97,3 +97,40 @@ header .logot img:hover {
     }
     
 }
+
+
+.PrincipalContainer{
+    background-image: url("");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-attachment:local;   
+    flex-direction: column;
+    position: relative;
+}
+ .carrusel{
+    width: 50rem;
+    height: 30rem;
+    position: absolute;
+    top: 100px;
+    right: 30px;
+
+ } 
+  
+  .PrincipalContainer{
+      background-image: url("");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: right;
+      background-attachment:local;   
+      flex-direction: column;
+      position: relative;
+  }
+   .carrusel{
+      width: 60rem;
+      height: 35rem;
+      position: absolute;
+      top: 50px;
+      right: 325px;
+  
+   }
