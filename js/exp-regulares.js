@@ -14,7 +14,7 @@ btnValidar.addEventListener("click", function (event) {
 
     let regexNombre = /^[A-Za-z]{3,15}$/;
     let regexEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
-    let regexTelefono = /^[1-9][0-9]*$/;
+    let regexTelefono = /^(?!.*(\d)\1{3,})[1-9][0-9]{9}$/
     let regexMensaje = /^.{1,200}$/;
 
     let errorMessage = ""; // Acumulador de mensajes de error
