@@ -16,6 +16,12 @@ divAlert.style.display = "none";
 // Agregar evento de click al botón de validación
 btnValidar.addEventListener("click", function (event) {
     event.preventDefault();
+    txtnombre.value="";
+    txtDomicilio.value="";
+    txtTelefono.value="";
+    txtEmail.value="";
+    txtContrasena.value="";
+    selectOficio.value="";
 
     // Expresiones regulares
     let regexNombre = /^[A-Za-z]{3,15}$/;
@@ -81,25 +87,45 @@ btnValidar.addEventListener("click", function (event) {
 
     // Si no hay errores, guardar el usuario
     if (bandera <= 0) {
-        let usuario = {
-            nombre: `${txtnombre.value}`,
-            domicilio: `${txtDomicilio.value}`,
-            telefono: `${txtTelefono.value}`,
-            email: `${txtEmail.value}`,
-            contrasena: `${txtContrasena.value}`,
-            oficio: `${selectOficio.value}`,
-        };
+    let usuario = {
+        nombre: txtnombre.value,
+        domicilio: txtDomicilio.value,
+        telefono: txtTelefono.value,
+        email: txtEmail.value,
+        contrasena: txtContrasena.value,
+        oficio: selectOficio.value,
+    };
 
-        // Obtener la foto como base64 y agregarla al usuario
-        let file = inputFoto.files[0];
-        let reader = new FileReader();
-        reader.onload = function(event) {
-            usuario.foto = `${event.target.result}`;
-            guardarUsuarioEnLocalStorage(usuario);
-        };
-        reader.readAsDataURL(file);
-    }
-});
+    // Obtener la foto como base64 y agregarla al usuario
+    let file = inputFoto.files[0];
+    let reader = new FileReader();
+    reader.onload = function(event) {
+        usuario.foto = event.target.result;
+        guardarUsuarioEnLocalStorage(usuario);
+
+        // Mostrar la alerta verde
+        mostrarAlertaExito();
+    };
+    reader.readAsDataURL(file);
+}
+// Función para mostrar la alerta de registro exitoso
+alertaExito.style.display = "none";
+function mostrarAlertaExito() {
+    let alertaExito = document.getElementById("alertaExito");
+    alertaExito.style.display = "block"; // Mostrar la alerta
+    setTimeout(function() {
+        alertaExito.style.display = "none"; // Ocultar la alerta después de unos segundos
+    }, 3000); // Cambia el valor (en milisegundos) según tus preferencias
+}})
+
+// Función para mostrar la alerta de registro exitoso
+function mostrarAlertaExito() {
+    let alertaExito = document.getElementById("alertaExito");
+    alertaExito.style.display = "block"; // Mostrar la alerta
+    setTimeout(function() {
+        alertaExito.style.display = "none"; // Ocultar la alerta después de unos segundos
+    }, 3000); // Cambia el valor (en milisegundos) según tus preferencias
+}
 
 // Función para guardar el usuario en el almacenamiento local
 function guardarUsuarioEnLocalStorage(usuario) {
