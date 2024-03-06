@@ -13,6 +13,31 @@ let inputFoto = document.getElementById("inputFoto");
 // Ocultar el div de alerta al principio
 divAlert.style.display = "none";
 
+//funcion de limpiar campos
+function limpiarCampos() {
+    txtnombre.value = "";
+    txtDomicilio.value = "";
+    txtTelefono.value = "";
+    txtEmail.value = "";
+    txtContrasena.value = "";
+    txtContrasenaConfirma.value = "";
+    selectOficio.value = "Elegir";
+    inputFoto.value = "";
+}
+
+// Función para mostrar una alerta de éxito o error
+function mostrarAlerta(mensaje, tipo) {
+    divAlert.innerHTML = mensaje;
+    divAlert.style.display = "block";
+    if (tipo === "exito") {
+        divAlert.classList.remove("alert-danger");
+        divAlert.classList.add("alert-success");
+    } else {
+        divAlert.classList.remove("alert-success");
+        divAlert.classList.add("alert-danger");
+    }
+}
+
 // Agregar evento de click al botón de validación
 btnValidar.addEventListener("click", function (event) {
     event.preventDefault();
@@ -96,6 +121,8 @@ btnValidar.addEventListener("click", function (event) {
         reader.onload = function(event) {
             usuario.foto = `${event.target.result}`;
             guardarUsuarioEnLocalStorage(usuario);
+            mostrarAlerta("El registro se ha guardado satisfactoriamente.", "exito");
+            limpiarCampos();
         };
         reader.readAsDataURL(file);
     }
