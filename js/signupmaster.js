@@ -129,7 +129,7 @@ btnValidar.addEventListener("click", function (event) {
 
 // Función para guardar el usuario en el almacenamiento local
 function guardarUsuarioEnLocalStorage(usuario) {
-    let usuariosGuardados = JSON.parse(localStorage.getItem('usuarios')) || [];
+    let usuariosGuardados = JSON.parse(localStorage.getItem('usuariosMaster')) || [];
     usuariosGuardados.push(usuario);
-    localStorage.setItem('usuarios', JSON.stringify(usuariosGuardados));
+    localStorage.setItem('usuariosMaster', JSON.stringify(usuariosGuardados));
 }
