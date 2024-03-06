@@ -20,16 +20,16 @@
    </div>
    <ul class="nav justify-content-end">
      <li class="nav-item">
-       <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
+       <a class="nav-link active text-light" href="/index.html">Home</a>
      </li>
      <li class="nav-item">
-       <a class="nav-link text-light" href="#">Crea tu anuncio</a>
+      <a class="nav-link active text-light" href="/login.html">Log In</a>
+    </li>
+     <li class="nav-item">
+       <a class="nav-link active text-light" href="/perfiles.html"> Feed </a>
      </li>
      <li class="nav-item">
-       <a class="nav-link text-light" href="#">Contacto</a>
-     </li>
-     <li class="nav-item">
-       <a class="nav-link disabled text-light" aria-disabled="true">Nosotros</a>
+       <a class="nav-link  active text-light" href=""> Nosotros </a>
      </li>
    </ul>
  </nav>
@@ -49,29 +49,29 @@
 
         <div class="mb-3- field">
           <label for="txtNombre" class="form-label"><strong>Nombre</strong></label>
-          <input type="text" name="emailjs_name" class="form-control" id="txtNombre" style=" justify-content: 75%; border: 2px solid black;">
+          <input type="text" name="emailjs_name" class="form-control" id="txtNombre" style=" justify-content: 75%; border: 2px solid black;" placeholder="Ingresa tu nombre">
         </div>
 
         <div class="mb-3- field">
           <label for="txtEmail" class="form-label"><strong>Email</strong></label>
-          <input type="email" name="emailjs_name" class="form-control" id="txtEmail" style=" justify-content: 75%; border: 2px solid black;">
+          <input type="email" name="emailjs_name" class="form-control" id="txtEmail" style=" justify-content: 75%; border: 2px solid black;" placeholder="Ingresa tu email">
         </div>
 
         <div class="mb-3- field">
           <label for="txtTelefono" class="form-label"><strong>Teléfono</strong></label>
-          <input type="tel" name="emailjs_name" class="form-control" id="txtTelefono" style=" justify-content: 75%; border: 2px solid black;">
+          <input type="tel" name="emailjs_name" class="form-control" id="txtTelefono" style=" justify-content: 75%; border: 2px solid black;" placeholder="Ingresa tu número">
         </div>
 
         <div class="mb-3- field">
           <label for="txtMensaje" class="form-label"><strong>Mensaje</strong></label>
-          <input type="text" name="emailjs_name" class="form-control" id="txtMensaje" style="border: 2px solid black;">
+          <input type="text" name="emailjs_name" class="form-control" id="txtMensaje" style="border: 2px solid black;" placeholder="Déjanos tu mensaje">
         </div>
       </div>
       <br>
-      <button id="btnValidar" value="Send Email" class="btn btn-primary btn-lg btn-block form" type="submit">Enviar</button>
+      <button id="btnValidar" value="Send Email" class="btn btn-danger btn-lg btn-block form" type="submit">Enviar</button>
 
     <!-- <input type="submit" id="btnValidar" value="Enviar" > -->
-      <button id="btnClear" class="btn btn-primary btn-lg btn-block" type="button">Limpiar todo</button>
+      <button id="btnClear" class="btn btn-danger btn-lg btn-block" type="button">Limpiar todo</button>
 
       
       <script type="text/javascript"
