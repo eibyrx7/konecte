@@ -1,17 +1,36 @@
-// Variables globales para elementos del DOM
 let btnValidar = document.getElementById("btnValidar");
 let divAlert = document.getElementById("divAlert");
-let txtnombre = document.getElementById("txtNombre");
-let txtDomicilio = document.getElementById("txtDomicilio");
+let txtnombre = document.getElementById("txtnombre");
 let txtTelefono = document.getElementById("txtTelefono");
 let txtEmail = document.getElementById("txtEmail");
 let txtContrasena = document.getElementById("txtContrasena");
 let txtContrasenaConfirma = document.getElementById("txtContrasenaConfirma");
-let selectOficio = document.getElementById("selectOficio");
-let inputFoto = document.getElementById("inputFoto");
 
 // Ocultar el div de alerta al principio
 divAlert.style.display = "none";
+
+//funcion de limpiar campos
+function limpiarCampos() {
+    txtnombre.value = "";
+    txtTelefono.value = "";
+    txtEmail.value = "";
+    txtContrasena.value = "";
+    txtContrasenaConfirma.value = "";
+    
+}
+
+// Función para mostrar una alerta de éxito o error
+function mostrarAlerta(mensaje, tipo) {
+    divAlert.innerHTML = mensaje;
+    divAlert.style.display = "block";
+    if (tipo === "exito") {
+        divAlert.classList.remove("alert-danger");
+        divAlert.classList.add("alert-success");
+    } else {
+        divAlert.classList.remove("alert-success");
+        divAlert.classList.add("alert-danger");
+    }
+}
 
 // Agregar evento de click al botón de validación
 btnValidar.addEventListener("click", function (event) {
@@ -30,11 +49,6 @@ btnValidar.addEventListener("click", function (event) {
     // Validaciones individuales
     if (!regexNombre.test(txtnombre.value)) {
         errorMessage += "El nombre tiene un formato incorrecto. </br>";
-        bandera++;
-    }
-
-    if (txtDomicilio.value.trim() === "") {
-        errorMessage += "La Dirección tiene un formato incorrecto. </br>";
         bandera++;
     }
 
@@ -58,17 +72,6 @@ btnValidar.addEventListener("click", function (event) {
         bandera++;
     }
 
-    if (selectOficio.value === "Elegir") {
-        errorMessage += "Debes seleccionar un oficio. </br>";
-        bandera++;
-    }
-
-    // Validación de foto
-    let fileExtension = inputFoto.value.split('.').pop().toLowerCase();
-    if (!['png', 'jpg', 'jpeg'].includes(fileExtension)) {
-        errorMessage += "El archivo debe ser en formato PNG o JPG. </br>";
-        bandera++;
-    }
 
     // Mostrar mensajes de error
     divAlert.innerHTML = errorMessage;
@@ -83,22 +86,16 @@ btnValidar.addEventListener("click", function (event) {
     if (bandera <= 0) {
         let usuario = {
             nombre: `${txtnombre.value}`,
-            domicilio: `${txtDomicilio.value}`,
             telefono: `${txtTelefono.value}`,
             email: `${txtEmail.value}`,
             contrasena: `${txtContrasena.value}`,
-            oficio: `${selectOficio.value}`,
         };
-
-        // Obtener la foto como base64 y agregarla al usuario
-        let file = inputFoto.files[0];
-        let reader = new FileReader();
-        reader.onload = function(event) {
-            usuario.foto = `${event.target.result}`;
-            guardarUsuarioEnLocalStorage(usuario);
-        };
-        reader.readAsDataURL(file);
+        guardarUsuarioEnLocalStorage(usuario);
+        mostrarAlerta("El registro se ha guardado satisfactoriamente.", "exito");
+        limpiarCampos();
     }
+
+       
 });
 
 // Función para guardar el usuario en el almacenamiento local
