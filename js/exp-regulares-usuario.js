@@ -1,42 +1,40 @@
 //expresiones regulares
-let btnClear = document.getElementById("btnClear");   //Cambiar el nombre de los botones 
-let btnValidar = document.getElementById("btnValidar");
+let btnValida = document.getElementById("btnValida");
 let divAlert = document.getElementById("divAlert");
-let txtnombre = document.getElementById("txtNombre");
-let txtEmail = document.getElementById("txtEmail");
+let txtDato = document.getElementById("txtDato");
+let txtDomicilio = document.getElementById("txtDomicilio");
 let txtTelefono = document.getElementById("txtTelefono");
-let txtMensaje = document.getElementById("txtMensaje");
+let txtContrasena = document.getElementById("txtContrasena");
+let txtContrasenaConfirma = document.getElementById("txtContrasenaConfirma");
 let bandera;
 
 divAlert.style.display = "none";
-btnValidar.addEventListener("click", function (event) {
+btnValida.addEventListener("click", function (event) {
     event.preventDefault();
 
     let regexNombre = /^[A-Za-z]{3,15}$/;
-    let regexEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
-    let regexTelefono = /^(?!.*(\d)\1{3,})[1-9][0-9]{9}$/
-    let regexMensaje = /^.{1,200}$/;
+    let regexDomicilio = /^(?!.*(\d)\1{6,})[^\s]{1,10}$/;
+    let regexTelefono = /^(?!.*(\d)\1{3,})[1-9][0-9]{9}$/;
+    let regexContrasena = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}$/;
+   
 
     let errorMessage = ""; // Acumulador de mensajes de error
     bandera = 0;
 
 
-    if (!regexNombre.test(txtnombre.value)) {
+    if (!regexNombre.test(txtDato.value)) {
         errorMessage += "El nombre tiene un formato incorrecto. </br>";
         bandera++;
     }
 
-    if (!regexEmail.test(txtEmail.value)) {
-        errorMessage += "El email tiene un formato incorrecto. </br>";
-        bandera++;
-    }
 
     if (!regexTelefono.test(txtTelefono.value)) {
         errorMessage += "El teléfono tiene un formato incorrecto. </br>";
         bandera++;
     }
-    if (!regexMensaje.test(txtMensaje.value)) {
-        errorMessage += "El mensaje tiene un formato incorrecto.";
+
+    if (!regexTelefono.test(txtTelefono.value)) {
+        errorMessage += "El teléfono tiene un formato incorrecto. </br>";
         bandera++;
     }
 
@@ -49,15 +47,15 @@ btnValidar.addEventListener("click", function (event) {
     }
     console.log(bandera)
     if (bandera <= 0){
-        envioBandera (btnValidar)
+        envioBandera (btnValida)
     }
 }); 
 
 btnClear.addEventListener("click", function (event) {
     event.preventDefault();
-    txtNombre.value = "";
-    txtEmail.value = "";
+    txtDato.value = "";
+    txtDomicilio.value = "";
     txtTelefono.value = "";
-    txtMensaje.value = "";
+    txtContrasena.value = "";
     divAlert.style.display = "none";
 });
