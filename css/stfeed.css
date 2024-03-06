@@ -124,6 +124,9 @@ body {
         background-color: white;
         margin: 6px 0px;
     }
+    .main {
+        z-index: 1;
+    }
     .nav-bar {
         height: 0px;
         position: absolute;
@@ -134,6 +137,7 @@ body {
         background-color: black;
         transition: 0.5s;
         overflow: hidden;
+        z-index: 2;
     } 
     .nav-bar.active {
         height: 450px;

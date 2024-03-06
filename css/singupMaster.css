@@ -13,6 +13,7 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 0 100px;
+    grid-area: barra;
 }
 header .logot {
     cursor: pointer;
@@ -72,6 +73,9 @@ body,html {
     align-items: center;
     
 }
+.encabezado {
+    grid-area: texto;
+}
 
 .formulario {
     background-color: rgb(242, 242, 234);
@@ -84,23 +88,19 @@ body,html {
     opacity: .8;
     text-align: center;
     background-image: none;
+    grid-area: formulario;
 }
-
-<<<<<<< HEAD
-.container{
-    align-items: center;
-   
-}
-
-
- 
-
-
-=======
 h1 {
     color: white;
 }
+h4 {
+    color: white;
+}
+
+
+
 @media (max-width:900px) {
+  
     header {
         padding: 0px 30px;
     }
@@ -114,6 +114,9 @@ h1 {
         background-color: white;
         margin: 6px 0px;
     }
+    .PrincipalContainer {
+        z-index: 1;
+    }
     .nav-bar {
         height: 0px;
         position: absolute;
@@ -124,6 +127,7 @@ h1 {
         background-color: black;
         transition: 0.5s;
         overflow: hidden;
+        z-index: 2;
     } 
     .nav-bar.active {
         height: 450px;
@@ -142,5 +146,24 @@ h1 {
     .nav-bar ul li a {
         margin-bottom: 20px;
     }
-    
+    .encabezado{
+        text-align: center;
+    }
+    .grid-container {
+        display: grid;
+        gap: 50x;
+        grid-template-areas:
+        "barra"
+        "texto"
+        "formulario"
+        ;
+    }
+}
+@media(max-width: 375px) {
+   .encabezado {
+    display: none;
+   }
+   .formulario {
+    height: 500;
+   }
 }
