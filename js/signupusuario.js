@@ -1,14 +1,10 @@
-// Variables globales para elementos del DOM
 let btnValidar = document.getElementById("btnValidar");
 let divAlert = document.getElementById("divAlert");
-let txtnombre = document.getElementById("txtNombre");
-let txtDomicilio = document.getElementById("txtDomicilio");
+let txtnombre = document.getElementById("txtnombre");
 let txtTelefono = document.getElementById("txtTelefono");
 let txtEmail = document.getElementById("txtEmail");
 let txtContrasena = document.getElementById("txtContrasena");
 let txtContrasenaConfirma = document.getElementById("txtContrasenaConfirma");
-let selectOficio = document.getElementById("selectOficio");
-let inputFoto = document.getElementById("inputFoto");
 
 // Ocultar el div de alerta al principio
 divAlert.style.display = "none";
@@ -16,13 +12,11 @@ divAlert.style.display = "none";
 //funcion de limpiar campos
 function limpiarCampos() {
     txtnombre.value = "";
-    txtDomicilio.value = "";
     txtTelefono.value = "";
     txtEmail.value = "";
     txtContrasena.value = "";
     txtContrasenaConfirma.value = "";
-    selectOficio.value = "Elegir";
-    inputFoto.value = "";
+    
 }
 
 // Función para mostrar una alerta de éxito o error
@@ -58,11 +52,6 @@ btnValidar.addEventListener("click", function (event) {
         bandera++;
     }
 
-    if (txtDomicilio.value.trim() === "") {
-        errorMessage += "La Dirección tiene un formato incorrecto. </br>";
-        bandera++;
-    }
-
     if (!regexTelefono.test(txtTelefono.value)) {
         errorMessage += "El teléfono tiene un formato incorrecto. </br>";
         bandera++;
@@ -83,17 +72,6 @@ btnValidar.addEventListener("click", function (event) {
         bandera++;
     }
 
-    if (selectOficio.value === "Elegir") {
-        errorMessage += "Debes seleccionar un oficio. </br>";
-        bandera++;
-    }
-
-    // Validación de foto
-    let fileExtension = inputFoto.value.split('.').pop().toLowerCase();
-    if (!['png', 'jpg', 'jpeg'].includes(fileExtension)) {
-        errorMessage += "El archivo debe ser en formato PNG o JPG. </br>";
-        bandera++;
-    }
 
     // Mostrar mensajes de error
     divAlert.innerHTML = errorMessage;
@@ -108,24 +86,16 @@ btnValidar.addEventListener("click", function (event) {
     if (bandera <= 0) {
         let usuario = {
             nombre: `${txtnombre.value}`,
-            domicilio: `${txtDomicilio.value}`,
             telefono: `${txtTelefono.value}`,
             email: `${txtEmail.value}`,
             contrasena: `${txtContrasena.value}`,
-            oficio: `${selectOficio.value}`,
         };
-
-        // Obtener la foto como base64 y agregarla al usuario
-        let file = inputFoto.files[0];
-        let reader = new FileReader();
-        reader.onload = function(event) {
-            usuario.foto = `${event.target.result}`;
-            guardarUsuarioEnLocalStorage(usuario);
-            mostrarAlerta("El registro se ha guardado satisfactoriamente.", "exito");
-            limpiarCampos();
-        };
-        reader.readAsDataURL(file);
+        guardarUsuarioEnLocalStorage(usuario);
+        mostrarAlerta("El registro se ha guardado satisfactoriamente.", "exito");
+        limpiarCampos();
     }
+
+       
 });
 
 // Función para guardar el usuario en el almacenamiento local

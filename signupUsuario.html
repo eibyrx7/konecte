@@ -37,7 +37,7 @@
 <body>
     
   <main class="PrincipalContainer">
-  <h1>Inicia sesión</h1>
+  <h1>SingUp Usuario</h1>
 
 <div class="formulario">
 
@@ -48,22 +48,32 @@
                 </div> <!--eliminar el center-->
             
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Nombre completo" aria-label="Username" autofocus id="txtDato">
-            </div>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Domicilio" aria-label="Username" id="txtDomicilio">
+                <input type="text" class="form-control" placeholder="Nombre completo" aria-label="Username" autofocus id="txtnombre">
             </div>
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Teléfono" aria-label="Username" id="txtTelefono">
             </div>
             <div class="input-group mb-3">
-                <input type="password" class="form-control" placeholder="Constraseña" aria-label="Username" id="txtContrasena">
+              <input type="email" class="form-control" placeholder="Correo Electrónico" aria-label="Username" id="txtEmail">
+            </div>
+            <div class="input-group mb-3">
+                <input type="password" class="form-control" placeholder="Contraseña" aria-label="Username" id="txtContrasena">
+              </div>
+               <!-- Poner en una ventanita desplegable las condiciones de la contraseña al
+              poner el mouse en el campo contraseña -->
+              <div>
+                <p><sup>La contraseña debe contener:
+                  <br>-Una letra minúscula de la "a" a la "z"
+                  <br>-Una letra mayúscula de la "A" a la "Z" 
+                  <br>-Al menos un digito 
+                  <br>-Al menos un carácter especial de entre (?=.*[$@$!%*?&])
+                  <br>-Longitud entre 8-15 caracteres </p></sup>
               </div>
               <div class="input-group mb-3">
-                <input type="password" class="form-control" placeholder="Confirmar Constraseña" aria-label="Username" id="txtContrasenaConfirma">
+                <input type="password" class="form-control" placeholder="Confirmar Contraseña" aria-label="Username" id="txtContrasenaConfirma">
               </div>
               <div class="col-12">
-                <button class="btn btn-danger" type="submit" id="btnValida">Crear</button>
+                <button class="btn btn-danger" type="submit" id="btnValidar">Crear</button>
         </div>
 
     </form>
@@ -73,7 +83,5 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="./js/exp-regulares-usuario.js" defer></script>
-    <script src="./js/localstorage.js" defer></script>
-    <!--<script src="./js/boton-envio.js" defer></script>-->
+    <script src="./js/signupusuario.js" defer></script>
 </html>
