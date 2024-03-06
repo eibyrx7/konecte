@@ -1,19 +1,18 @@
-.navbar {
+.navegar {
     background-color: #DB435B;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: flex-end;
 }
-.navbar .container-fluid {
+.navegar .logot {
     cursor: pointer;
 }
-.navbar .container-fluid img {
-    width: 15%;
+.navegar .logot img {
+    width: 25%;
     transition: all, 0.3s;
 }
 
-.navbar .container-fluid img:hover {
+.navegar .logot img:hover {
     transform: scale(1.2);
 }
 
