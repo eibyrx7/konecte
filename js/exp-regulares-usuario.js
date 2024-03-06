@@ -33,8 +33,13 @@ btnValida.addEventListener("click", function (event) {
         bandera++;
     }
 
-    if (!regexTelefono.test(txtTelefono.value)) {
-        errorMessage += "El teléfono tiene un formato incorrecto. </br>";
+    if (!regexDomicilio.test(txtDomicilio.value)) {
+        errorMessage += "El domicilio tiene un formato incorrecto. </br>";
+        bandera++;
+    }
+
+    if (!regexContrasena.test(txtContrasena.value)) {
+        errorMessage += "La contraseña tiene un formato incorrecto. </br>";
         bandera++;
     }
     
@@ -50,12 +55,3 @@ btnValida.addEventListener("click", function (event) {
         envioBandera (btnValida)
     }
 }); 
-
-btnClear.addEventListener("click", function (event) {
-    event.preventDefault();
-    txtDato.value = "";
-    txtDomicilio.value = "";
-    txtTelefono.value = "";
-    txtContrasena.value = "";
-    divAlert.style.display = "none";
-});
