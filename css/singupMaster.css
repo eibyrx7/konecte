@@ -83,8 +83,20 @@ body,html {
     width: 100%; 
     opacity: .8;
     text-align: center;
+    background-image: none;
 }
 
+<<<<<<< HEAD
+.container{
+    align-items: center;
+   
+}
+
+
+ 
+
+
+=======
 h1 {
     color: white;
 }
