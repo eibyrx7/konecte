@@ -62,7 +62,17 @@ body,html {
     background-repeat: no-repeat;
     background-position: right;
     background-attachment:local;   
+    flex-direction: column;
+    position: relative;
 }
+ .carrusel{
+    width: 50rem;
+    height: 30rem;
+    position: absolute;
+    top: 130px;
+    right: 150px;
+
+ }
 
 
 
@@ -108,6 +118,8 @@ body,html {
     .nav-bar ul li a {
         margin-bottom: 20px;
     }
+   
     
+
 }
 
