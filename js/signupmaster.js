@@ -105,6 +105,13 @@ btnValidar.addEventListener("click", function (event) {
 
     // Si no hay errores, guardar el usuario
     if (bandera <= 0) {
+         // Verificar si el correo electrónico ya está registrado
+    let usuariosGuardados = JSON.parse(localStorage.getItem('usuariosMaster')) || [];
+    let correoExistente = usuariosGuardados.some(usuarioGuardado => usuarioGuardado.email === txtEmail.value);
+
+    if (correoExistente) {
+        mostrarAlerta("El correo electrónico ya está registrado.", "error");
+    } else {
         let usuario = {
             nombre: `${txtnombre.value}`,
             domicilio: `${txtDomicilio.value}`,
@@ -125,7 +132,7 @@ btnValidar.addEventListener("click", function (event) {
         };
         reader.readAsDataURL(file);
     }
-});
+}});
 
 // Función para guardar el usuario en el almacenamiento local
 function guardarUsuarioEnLocalStorage(usuario) {

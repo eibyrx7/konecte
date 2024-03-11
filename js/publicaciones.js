@@ -42,7 +42,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
             let cardText = document.createElement("p");
             cardText.classList.add("card-text");
-            cardText.textContent = `Domicilio: ${usuario.domicilio}, Teléfono: ${usuario.telefono}, Email: ${usuario.email}, Oficio: ${usuario.oficio}`;
+            cardText.textContent = `Domicilio: ${usuario.domicilio}, 
+            Teléfono: ${usuario.telefono}, 
+            Email: ${usuario.email}, 
+            Oficio: ${usuario.oficio}`;
 
             // Agregar elementos a la estructura de la tarjeta
             colImg.appendChild(img);
