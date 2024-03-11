@@ -19,15 +19,21 @@ document.addEventListener("DOMContentLoaded", function() {
         // Buscar el usuario con el correo proporcionado
         const usuarioEncontrado = usuariosGuardados.find(usuario => usuario.email === email);
 
-        // Verificar si se encontró un usuario y si la contraseña coincide
-        if (usuarioEncontrado && usuarioEncontrado.contrasena === password) {
-            // Iniciar sesión correctamente
-            mostrarAlerta("Inicio de sesión exitoso", "exito");
-            // Aquí podrías redirigir al usuario a otra página, por ejemplo:
-            // window.location.href = 'pagina-de-inicio.html';
+        // Verificar si se encontró un usuario
+        if (usuarioEncontrado) {
+            // Verificar si la contraseña coincide
+            if (usuarioEncontrado.contrasena === password) {
+                // Iniciar sesión correctamente
+                mostrarAlerta("Inicio de sesión exitoso", "exito");
+                // Aquí podrías redirigir al usuario a otra página, por ejemplo:
+                // window.location.href = 'pagina-de-inicio.html';
+            } else {
+                // Mostrar mensaje de error si las credenciales son incorrectas
+                mostrarAlerta("Credenciales incorrectas", "error");
+            }
         } else {
-            // Mostrar mensaje de error si las credenciales son incorrectas
-            mostrarAlerta("Credenciales incorrectas", "error");
+            // Mostrar mensaje de error si no se encontró ningún usuario con el correo proporcionado
+            mostrarAlerta("Usuario no Registrado", "error");
         }
     }
 
