@@ -4,6 +4,12 @@ document.addEventListener("DOMContentLoaded", function() {
     let form = document.getElementById("formulario");
     let txtEmail = document.getElementById("txtEmail");
     let txtContrasena = document.getElementById("txtContrasena");
+    let divAlert = document.getElementById("divAlert");
+    let divAlert2 = document.getElementById("divAlert2");
+
+    // Ocultar el div de alerta al principio
+    divAlert.style.display = "none";
+    divAlert2.style.display = "none";
 
     // Función para validar el inicio de sesión
     function iniciarSesion(email, password) {
@@ -13,23 +19,26 @@ document.addEventListener("DOMContentLoaded", function() {
         // Buscar el usuario con el correo proporcionado
         const usuarioEncontrado = usuariosGuardados.find(usuario => usuario.email === email);
 
-        // Verificar si se encontró un usuario y si la contraseña coincide
-        if (usuarioEncontrado && usuarioEncontrado.contrasena === password) {
-            // Iniciar sesión correctamente
-            mostrarAlerta("El registro se ha guardado satisfactoriamente.");
-            // Aquí podrías redirigir al usuario a otra página, por ejemplo:
-            // window.location.href = 'pagina-de-inicio.html';
+        // Verificar si se encontró un usuario
+        if (usuarioEncontrado) {
+            // Verificar si la contraseña coincide
+            if (usuarioEncontrado.contrasena === password) {
+                // Iniciar sesión correctamente
+                mostrarAlerta("Inicio de sesión exitoso", "exito");
+                // Aquí podrías redirigir al usuario a otra página, por ejemplo:
+                // window.location.href = 'pagina-de-inicio.html';
+            } else {
+                // Mostrar mensaje de error si las credenciales son incorrectas
+                mostrarAlerta("Credenciales incorrectas", "error");
+            }
         } else {
-            // Mostrar mensaje de error si las credenciales son incorrectas
-            mostrarAlerta("El registro se ha guardado satisfactoriamente.");
+            // Mostrar mensaje de error si no se encontró ningún usuario con el correo proporcionado
+            mostrarAlerta("Usuario no Registrado", "error");
         }
     }
 
-
     // Función para mostrar una alerta de éxito o error
     function mostrarAlerta(mensaje, tipo) {
-        divAlert.innerHTML = mensaje;
-        divAlert.style.display = "block";
         if (tipo === "exito") {
             divAlert.classList.remove("alert-danger");
             divAlert.classList.add("alert-success");
@@ -37,9 +46,9 @@ document.addEventListener("DOMContentLoaded", function() {
             divAlert.classList.remove("alert-success");
             divAlert.classList.add("alert-danger");
         }
+        divAlert.innerHTML = mensaje;
+        divAlert.style.display = "block";
     }
-
-
 
     // Evento de envío del formulario
     btnValidar.addEventListener("click", function (event) {
@@ -51,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Validar que los campos no estén vacíos
         if (!email || !password) {
-            alert('Por favor ingresa tu correo y contraseña');
+            mostrarAlerta('Por favor ingresa tu correo y contraseña');
             return;
         }
 
