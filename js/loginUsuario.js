@@ -1,28 +1,20 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Obtener referencia al formulario y campos de entrada
     let btnValidar = document.getElementById("btnValidar");
-    //let form = document.getElementById("formulario");
+    let form = document.getElementById("formulario");
     let txtEmail = document.getElementById("txtEmail");
     let txtContrasena = document.getElementById("txtContrasena");
     let divAlert = document.getElementById("divAlert");
     let divAlert2 = document.getElementById("divAlert2");
 
-
     // Ocultar el div de alerta al principio
     divAlert.style.display = "none";
     divAlert2.style.display = "none";
 
-
-    function limpiarCampos() {
-        txtEmail.value = "";
-        txtContrasena.value = "";
-    }
-
-
     // Función para validar el inicio de sesión
     function iniciarSesion(email, password) {
         // Obtener usuarios almacenados en el localStorage
-        const usuariosGuardados = JSON.parse(localStorage.getItem('usuariosMaster')) || [];
+        const usuariosGuardados = JSON.parse(localStorage.getItem('usuariosUsu')) || [];
 
         // Buscar el usuario con el correo proporcionado
         const usuarioEncontrado = usuariosGuardados.find(usuario => usuario.email === email);
@@ -33,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (usuarioEncontrado.contrasena === password) {
                 // Iniciar sesión correctamente
                 mostrarAlerta("Inicio de sesión exitoso", "exito");
-                limpiarCampos();
+                // Aquí podrías redirigir al usuario a otra página, por ejemplo:
                 window.location.href = 'index.html';
             } else {
                 // Mostrar mensaje de error si las credenciales son incorrectas
