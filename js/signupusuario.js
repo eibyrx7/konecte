@@ -1,42 +1,62 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Obtener referencia al formulario y campos de entrada
     let btnValidar = document.getElementById("btnValidar");
-    let form = document.getElementById("formulario");
+    let txtNombre = document.getElementById("txtNombre");
+    let txtTelefono = document.getElementById("txtTelefono");
     let txtEmail = document.getElementById("txtEmail");
     let txtContrasena = document.getElementById("txtContrasena");
     let divAlert = document.getElementById("divAlert");
-    let divAlert2 = document.getElementById("divAlert2");
 
     // Ocultar el div de alerta al principio
-    divAlert.style.display = "none";
-    divAlert2.style.display = "none";
+    if (divAlert) {
+        divAlert.style.display = "none";
+    }
 
     // Función para validar el inicio de sesión
-    function iniciarSesion(email, password) {
-        // Obtener usuarios almacenados en el localStorage
-        const usuariosGuardados = JSON.parse(localStorage.getItem('usuariosUsu')) || [];
+    function iniciarSesion(nombre, telefono, email, password) {
+        // Expresiones regulares
+        let regexNombre = /^[A-Za-z\s]+$/;
+        let regexTelefono = /^\d{10}$/;
+        let regexEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
 
-        // Buscar el usuario con el correo proporcionado
-        const usuarioEncontrado = usuariosGuardados.find(usuario => usuario.email === email);
-
-        // Verificar si se encontró un usuario
-        if (usuarioEncontrado) {
-            // Verificar si la contraseña coincide
-            if (usuarioEncontrado.contrasena === password) {
-                // Iniciar sesión correctamente
-                mostrarAlerta("Inicio de sesión exitoso", "exito");
-                // Guardar datos de inicio de sesión en localStorage
-                guardarDatosInicioSesion(usuarioEncontrado);
-                // Redirigir al usuario a otra página, por ejemplo:
-                window.location.href = 'index.html';
-            } else {
-                // Mostrar mensaje de error si las credenciales son incorrectas
-                mostrarAlerta("Credenciales incorrectas", "error");
-            }
-        } else {
-            // Mostrar mensaje de error si no se encontró ningún usuario con el correo proporcionado
-            mostrarAlerta("Usuario no Registrado", "error");
+        // Validar el formato del nombre
+        if (!regexNombre.test(nombre)) {
+            mostrarAlerta("El nombre tiene un formato incorrecto.", "error");
+            return;
         }
+
+        // Validar el formato del teléfono
+        if (!regexTelefono.test(telefono)) {
+            mostrarAlerta("El teléfono tiene un formato incorrecto.", "error");
+            return;
+        }
+
+        // Validar el formato del correo electrónico
+        if (!regexEmail.test(email)) {
+            mostrarAlerta("El correo electrónico tiene un formato incorrecto.", "error");
+            return;
+        }
+
+        // Validar que la contraseña tenga al menos 6 caracteres
+        if (password.length < 6) {
+            mostrarAlerta("La contraseña debe tener al menos 6 caracteres.", "error");
+            return;
+        }
+
+        // Guardar datos de inicio de sesión en localStorage
+        let usuario = {
+            nombre: nombre,
+            telefono: telefono,
+            email: email,
+            contrasena: password
+        };
+        guardarDatosInicioSesion(usuario);
+
+        // Mostrar mensaje de éxito
+        mostrarAlerta("Inicio de sesión exitoso", "exito");
+
+        // Redirigir al usuario a otra página, por ejemplo:
+        window.location.href = 'index.html';
     }
 
     // Función para mostrar una alerta de éxito o error
@@ -56,18 +76,14 @@ document.addEventListener("DOMContentLoaded", function() {
     btnValidar.addEventListener("click", function (event) {
         event.preventDefault(); // Evitar que se envíe el formulario automáticamente
 
-        // Obtener valores de correo y contraseña
+        // Obtener valores del formulario
+        let nombre = txtNombre.value.trim();
+        let telefono = txtTelefono.value.trim();
         let email = txtEmail.value.trim();
         let password = txtContrasena.value.trim();
 
-        // Validar que los campos no estén vacíos
-        if (!email || !password) {
-            mostrarAlerta('Por favor ingresa tu correo y contraseña');
-            return;
-        }
-
         // Llamar a la función de inicio de sesión
-        iniciarSesion(email, password);
+        iniciarSesion(nombre, telefono, email, password);
     });
 });
 
