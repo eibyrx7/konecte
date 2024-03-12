@@ -1,5 +1,6 @@
 let btnValidar = document.getElementById("btnValidar");
 let divAlert = document.getElementById("divAlert");
+let divAlert2 = document.getElementById("divAlert2");
 let txtnombre = document.getElementById("txtnombre");
 let txtTelefono = document.getElementById("txtTelefono");
 let txtEmail = document.getElementById("txtEmail");
