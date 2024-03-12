@@ -1,93 +1,115 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Obtener referencia al formulario y campos de entrada
-    let btnValidar = document.getElementById("btnValidar");
-    let txtNombre = document.getElementById("txtNombre");
-    let txtTelefono = document.getElementById("txtTelefono");
-    let txtEmail = document.getElementById("txtEmail");
-    let txtContrasena = document.getElementById("txtContrasena");
-    let divAlert = document.getElementById("divAlert");
+let btnValidar = document.getElementById("btnValidar");
+let divAlert = document.getElementById("divAlert");
+let txtnombre = document.getElementById("txtnombre");
+let txtTelefono = document.getElementById("txtTelefono");
+let txtEmail = document.getElementById("txtEmail");
+let txtContrasena = document.getElementById("txtContrasena");
+let txtContrasenaConfirma = document.getElementById("txtContrasenaConfirma");
 
-    // Ocultar el div de alerta al principio
-    if (divAlert) {
-        divAlert.style.display = "none";
+// Ocultar el div de alerta al principio
+divAlert.style.display = "none";
+
+//funcion de limpiar campos
+function limpiarCampos() {
+    txtnombre.value = "";
+    txtTelefono.value = "";
+    txtEmail.value = "";
+    txtContrasena.value = "";
+    txtContrasenaConfirma.value = "";
+    
+}
+
+// Función para mostrar una alerta de éxito o error
+function mostrarAlerta(mensaje, tipo) {
+    divAlert.innerHTML = mensaje;
+    divAlert.style.display = "block";
+    if (tipo === "exito") {
+        divAlert.classList.remove("alert-danger");
+        divAlert.classList.add("alert-success");
+    } else {
+        divAlert.classList.remove("alert-success");
+        divAlert.classList.add("alert-danger");
+    }
+}
+
+// Agregar evento de click al botón de validación
+btnValidar.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    // Expresiones regulares
+    let regexNombre = /^[A-Z][a-z]+(?: [A-Z][a-z]+)*$/;
+    let regexEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+    let regexTelefono = /^[1-9][0-9]*$/;
+    let regexContrasena = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}$/;
+
+    // Acumulador de mensajes de error
+    let errorMessage = "";
+    let bandera = 0;
+
+    // Validaciones individuales
+    if (!regexNombre.test(txtnombre.value)) {
+        errorMessage += "El nombre tiene un formato incorrecto. </br>";
+        bandera++;
     }
 
-    // Función para validar el inicio de sesión
-    function iniciarSesion(nombre, telefono, email, password) {
-        // Expresiones regulares
-        let regexNombre = /^[A-Za-z\s]+$/;
-        let regexTelefono = /^\d{10}$/;
-        let regexEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+    if (!regexTelefono.test(txtTelefono.value)) {
+        errorMessage += "El teléfono tiene un formato incorrecto. </br>";
+        bandera++;
+    }
 
-        // Validar el formato del nombre
-        if (!regexNombre.test(nombre)) {
-            mostrarAlerta("El nombre tiene un formato incorrecto.", "error");
-            return;
-        }
+    if (!regexEmail.test(txtEmail.value)) {
+        errorMessage += "El email tiene un formato incorrecto. </br>";
+        bandera++;
+    }
 
-        // Validar el formato del teléfono
-        if (!regexTelefono.test(telefono)) {
-            mostrarAlerta("El teléfono tiene un formato incorrecto.", "error");
-            return;
-        }
+    if (!regexContrasena.test(txtContrasena.value)) {
+        errorMessage += "La contraseña tiene un formato incorrecto. </br>";
+        bandera++;
+    }
 
-        // Validar el formato del correo electrónico
-        if (!regexEmail.test(email)) {
-            mostrarAlerta("El correo electrónico tiene un formato incorrecto.", "error");
-            return;
-        }
+    if (txtContrasena.value !== txtContrasenaConfirma.value) {
+        errorMessage += "Las contraseñas no coinciden. </br>";
+        bandera++;
+    }
 
-        // Validar que la contraseña tenga al menos 6 caracteres
-        if (password.length < 6) {
-            mostrarAlerta("La contraseña debe tener al menos 6 caracteres.", "error");
-            return;
-        }
 
-        // Guardar datos de inicio de sesión en localStorage
+    // Mostrar mensajes de error
+    divAlert.innerHTML = errorMessage;
+    if (errorMessage === "") {
+        divAlert.style.display = "none";
+    } else {
+        divAlert.style.display = "block";
+        bandera++;
+    }
+
+    // Si no hay errores, guardar el usuario
+    if (bandera <= 0) {
+    // Verificar si el correo electrónico ya está registrado
+    let usuariosGuardados = JSON.parse(localStorage.getItem('usuariosMaster')) || [];
+    let correoExistente = usuariosGuardados.some(usuarioGuardado => usuarioGuardado.email === txtEmail.value);
+
+    if (correoExistente) {
+        mostrarAlerta("El correo electrónico ya está registrado.", "error");
+    } else {
         let usuario = {
-            nombre: nombre,
-            telefono: telefono,
-            email: email,
-            contrasena: password
+            nombre: `${txtnombre.value}`,
+            telefono: `${txtTelefono.value}`,
+            email: `${txtEmail.value}`,
+            contrasena: `${txtContrasena.value}`,
         };
-        guardarDatosInicioSesion(usuario);
-
-        // Mostrar mensaje de éxito
-        mostrarAlerta("Inicio de sesión exitoso", "exito");
-
-        // Redirigir al usuario a otra página, por ejemplo:
+        guardarUsuarioEnLocalStorage(usuario);
+        mostrarAlerta("El registro se ha guardado satisfactoriamente.", "exito");
+        limpiarCampos();
+        // Redireccionar solo cuando los datos son válidos
         window.location.href = 'index.html';
     }
 
-    // Función para mostrar una alerta de éxito o error
-    function mostrarAlerta(mensaje, tipo) {
-        if (tipo === "exito") {
-            divAlert.classList.remove("alert-danger");
-            divAlert.classList.add("alert-success");
-        } else {
-            divAlert.classList.remove("alert-success");
-            divAlert.classList.add("alert-danger");
-        }
-        divAlert.innerHTML = mensaje;
-        divAlert.style.display = "block";
-    }
+       
+}});
 
-    // Evento de envío del formulario
-    btnValidar.addEventListener("click", function (event) {
-        event.preventDefault(); // Evitar que se envíe el formulario automáticamente
-
-        // Obtener valores del formulario
-        let nombre = txtNombre.value.trim();
-        let telefono = txtTelefono.value.trim();
-        let email = txtEmail.value.trim();
-        let password = txtContrasena.value.trim();
-
-        // Llamar a la función de inicio de sesión
-        iniciarSesion(nombre, telefono, email, password);
-    });
-});
-
-// Función para guardar datos de inicio de sesión en localStorage
-function guardarDatosInicioSesion(usuario) {
-    localStorage.setItem('usuarioActual', JSON.stringify(usuario));
+// Función para guardar el usuario en el almacenamiento local
+function guardarUsuarioEnLocalStorage(usuario) {
+    let usuariosGuardados = JSON.parse(localStorage.getItem('usuariosUsu')) || [];
+    usuariosGuardados.push(usuario);
+    localStorage.setItem('usuariosUsu', JSON.stringify(usuariosGuardados));
 }
