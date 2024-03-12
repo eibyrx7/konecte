@@ -40,9 +40,9 @@ function mostrarAlerta(mensaje, tipo) {
 // Agregar evento de click al botón de validación
 btnValidar.addEventListener("click", function (event) {
     event.preventDefault();
-
+    
     // Expresiones regulares
-    let regexNombre = /^[A-Za-z]{3,15}$/;
+    let regexNombre = /^[A-Z][a-z]+(?: [A-Z][a-z]+)*$/;
     let regexEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
     let regexTelefono = /^[1-9][0-9]*$/;
     let regexContrasena = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}$/;
@@ -129,6 +129,8 @@ btnValidar.addEventListener("click", function (event) {
             guardarUsuarioEnLocalStorage(usuario);
             mostrarAlerta("El registro se ha guardado satisfactoriamente.", "exito");
             limpiarCampos();
+             // Redireccionar solo cuando los datos son válidos
+             window.location.href = 'index.html';
         };
         reader.readAsDataURL(file);
     }

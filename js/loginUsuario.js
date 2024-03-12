@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Función para validar el inicio de sesión
     function iniciarSesion(email, password) {
         // Obtener usuarios almacenados en el localStorage
-        const usuariosGuardados = JSON.parse(localStorage.getItem('usuariosMaster')) || [];
+        const usuariosGuardados = JSON.parse(localStorage.getItem('usuariosUsu')) || [];
 
         // Buscar el usuario con el correo proporcionado
         const usuarioEncontrado = usuariosGuardados.find(usuario => usuario.email === email);
