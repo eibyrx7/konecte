@@ -42,13 +42,18 @@
 <main class="PrincipalContainer">
 <h1>Login</h1>
 <div class="formulario">
+  <div class="alertas">
+    <div class="alert alert-danger" role="alert" id="divAlert"></div>
+    <div class="alert alert-success" role="alert" id="divAlert2"></div>
     <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Ingresa tu Correo" aria-label="Username" autofocus id="txtEmail">
+        <input type="email" class="form-control" placeholder="Correo Electrónico" aria-label="Username"
+            id="txtEmail">
     </div>
-
     <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Ingresa tu Contraseña" aria-label="Username" id="txtContrasena">
+        <input type="password" class="form-control" placeholder="Contraseña" aria-label="Username"
+            id="txtContrasena">
     </div>
+</div>
 
     <div class="col-12">
         <button class="btn btn-danger" type="submit" id="btnValidar">Iniciar</button>

@@ -25,7 +25,9 @@ document.addEventListener("DOMContentLoaded", function() {
             if (usuarioEncontrado.contrasena === password) {
                 // Iniciar sesión correctamente
                 mostrarAlerta("Inicio de sesión exitoso", "exito");
-                // Aquí podrías redirigir al usuario a otra página, por ejemplo:
+                // Guardar datos de inicio de sesión en localStorage
+                guardarDatosInicioSesion(usuarioEncontrado);
+                // Redirigir al usuario a otra página, por ejemplo:
                 window.location.href = 'index.html';
             } else {
                 // Mostrar mensaje de error si las credenciales son incorrectas
@@ -67,4 +69,24 @@ document.addEventListener("DOMContentLoaded", function() {
         // Llamar a la función de inicio de sesión
         iniciarSesion(email, password);
     });
+});
+
+// Función para guardar datos de inicio de sesión en localStorage
+function guardarDatosInicioSesion(correo, contraseña) {
+    const usuario = {
+        email: correo,
+        contrasena: contraseña
+    };
+    localStorage.setItem('usuarioActual', JSON.stringify(usuario));
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Recuperar los datos del usuario del localStorage
+    const usuarioActual = JSON.parse(localStorage.getItem('usuarioActual'));
+
+    // Verificar si hay un usuario actualmente logueado
+    if (usuarioActual) {
+        // Mostrar la foto del usuario si está disponible
+        document.getElementById('userPhoto').src = usuarioActual.foto;
+    }
 });
