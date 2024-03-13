@@ -5,7 +5,7 @@ function addItem(item){
       '    <div class="card-body">\n' +
       '        <h5 class="card-title">'+item.name+'</h5>\n' +
       '        <p class="card-text">'+item.description+'</p>\n' +
-      '        <button type="button" class="btn btn-danger">Encuéntralo</button>\n' +
+      '        <a href="./publicaciones.html" class="btn btn-danger">Encuéntralo</a>\n' +
       '    </div>\n' +
       '</div>\n' +
       '<br/>';
