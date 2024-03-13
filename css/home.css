@@ -53,6 +53,16 @@ header .logot img:hover {
     background-color: black;
 }
 
+.container{
+    background-image: url("");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-attachment:local;   
+    flex-direction: column;
+    position: relative;
+}
+
 @media (max-width:900px) {
     header {
         padding: 0px 30px;
@@ -95,5 +105,16 @@ header .logot img:hover {
     .nav-bar ul li a {
         margin-bottom: 20px;
     }
-    
+
+
+.container{
+    background-image: url("");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-attachment:local;   
+    flex-direction: column;
+    position: relative;
+}
+
 }

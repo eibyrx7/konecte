@@ -37,7 +37,7 @@ btnValidar.addEventListener("click", function (event) {
     event.preventDefault();
 
     // Expresiones regulares
-    let regexNombre = /^[A-Za-z]{3,15}$/;
+    let regexNombre = /^[A-Z][a-z]+(?: [A-Z][a-z]+)*$/;
     let regexEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
     let regexTelefono = /^[1-9][0-9]*$/;
     let regexContrasena = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}$/;
@@ -84,6 +84,13 @@ btnValidar.addEventListener("click", function (event) {
 
     // Si no hay errores, guardar el usuario
     if (bandera <= 0) {
+    // Verificar si el correo electrónico ya está registrado
+    let usuariosGuardados = JSON.parse(localStorage.getItem('usuariosMaster')) || [];
+    let correoExistente = usuariosGuardados.some(usuarioGuardado => usuarioGuardado.email === txtEmail.value);
+
+    if (correoExistente) {
+        mostrarAlerta("El correo electrónico ya está registrado.", "error");
+    } else {
         let usuario = {
             nombre: `${txtnombre.value}`,
             telefono: `${txtTelefono.value}`,
@@ -93,14 +100,16 @@ btnValidar.addEventListener("click", function (event) {
         guardarUsuarioEnLocalStorage(usuario);
         mostrarAlerta("El registro se ha guardado satisfactoriamente.", "exito");
         limpiarCampos();
+        // Redireccionar solo cuando los datos son válidos
+        window.location.href = 'index.html';
     }
 
        
-});
+}});
 
 // Función para guardar el usuario en el almacenamiento local
 function guardarUsuarioEnLocalStorage(usuario) {
-    let usuariosGuardados = JSON.parse(localStorage.getItem('usuarios')) || [];
+    let usuariosGuardados = JSON.parse(localStorage.getItem('usuariosUsu')) || [];
     usuariosGuardados.push(usuario);
-    localStorage.setItem('usuarios', JSON.stringify(usuariosGuardados));
+    localStorage.setItem('usuariosUsu', JSON.stringify(usuariosGuardados));
 }
