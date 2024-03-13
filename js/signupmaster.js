@@ -130,7 +130,7 @@ btnValidar.addEventListener("click", function (event) {
             mostrarAlerta("El registro se ha guardado satisfactoriamente.", "exito");
             limpiarCampos();
              // Redireccionar solo cuando los datos son válidos
-             window.location.href = 'index.html';
+             window.location.href = 'publicaciones.html';
         };
         reader.readAsDataURL(file);
     }

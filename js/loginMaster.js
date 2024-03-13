@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Obtener referencia al formulario y campos de entrada
     let btnValidar = document.getElementById("btnValidar");
     let txtEmail = document.getElementById("txtEmail");
