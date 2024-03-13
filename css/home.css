@@ -30,6 +30,7 @@ header .logot img:hover {
 }
 .nav-bar ul {
     display: flex;
+    margin-top: 5%;
    
 }
 .nav-bar ul li a {
@@ -89,6 +90,7 @@ header .logot img:hover {
         background-color: black;
         transition: 0.5s;
         overflow: hidden;
+        z-index: 2;
     } 
     .nav-bar.active {
         height: 450px;
@@ -117,6 +119,7 @@ header .logot img:hover {
     background-attachment:local;   
     flex-direction: column;
     position: relative;
+    z-index: 1;
 }
 
 }
