@@ -53,6 +53,16 @@ header .logot img:hover {
     background-color: black;
 }
 
+.container{
+    background-image: url("");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-attachment:local;   
+    flex-direction: column;
+    position: relative;
+}
+
 @media (max-width:900px) {
     header {
         padding: 0px 30px;
@@ -95,11 +105,9 @@ header .logot img:hover {
     .nav-bar ul li a {
         margin-bottom: 20px;
     }
-    
-}
 
 
-.PrincipalContainer{
+.container{
     background-image: url("");
     background-size: cover;
     background-repeat: no-repeat;
@@ -108,29 +116,5 @@ header .logot img:hover {
     flex-direction: column;
     position: relative;
 }
- .carrusel{
-    width: 50rem;
-    height: 30rem;
-    position: absolute;
-    top: 100px;
-    right: 30px;
 
- } 
-  
-  .PrincipalContainer{
-      background-image: url("");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: right;
-      background-attachment:local;   
-      flex-direction: column;
-      position: relative;
-  }
-   .carrusel{
-      width: 60rem;
-      height: 35rem;
-      position: absolute;
-      top: 50px;
-      right: 325px;
-  
-   }
+}
