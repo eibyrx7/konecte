@@ -61,6 +61,8 @@ header .logot img:hover {
     background-attachment:local;   
     flex-direction: column;
     position: relative;
+    text-align: center;
+    text-decoration-color: #DB435B;
 }
 
 @media (max-width:900px) {
