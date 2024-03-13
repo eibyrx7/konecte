@@ -1,5 +1,6 @@
 let btnValidar = document.getElementById("btnValidar");
 let divAlert = document.getElementById("divAlert");
+let divAlert2 = document.getElementById("divAlert2");
 let txtnombre = document.getElementById("txtNombre");
 let txtDomicilio = document.getElementById("txtDomicilio");
 let txtTelefono = document.getElementById("txtTelefono");
@@ -12,7 +13,8 @@ let inputFoto = document.getElementById("inputFoto");
 // Ocultar el div de alerta al principio
 divAlert.style.display = "none";
 divAlert2.style.display = "none";
-//funcion de limpiar campos
+
+// Función para limpiar campos
 function limpiarCampos() {
     txtnombre.value = "";
     txtDomicilio.value = "";
@@ -23,6 +25,14 @@ function limpiarCampos() {
     selectOficio.value = "Elegir";
     inputFoto.value = "";
 }
+
+// Función para mostrar una alerta de éxito o error con un retraso
+function mostrarAlertaConRetraso(mensaje, tipo, delay) {
+    setTimeout(function() {
+        mostrarAlerta(mensaje, tipo);
+    }, delay);
+}
+
 
 // Función para mostrar una alerta de éxito o error
 function mostrarAlerta(mensaje, tipo) {
@@ -36,6 +46,8 @@ function mostrarAlerta(mensaje, tipo) {
         divAlert.classList.add("alert-danger");
     }
 }
+
+
 
 // Agregar evento de click al botón de validación
 btnValidar.addEventListener("click", function (event) {
@@ -127,10 +139,14 @@ btnValidar.addEventListener("click", function (event) {
         reader.onload = function(event) {
             usuario.foto = `${event.target.result}`;
             guardarUsuarioEnLocalStorage(usuario);
-            mostrarAlerta("El registro se ha guardado satisfactoriamente.", "exito");
+            mostrarAlertaConRetraso("El registro se ha guardado satisfactoriamente.", "exito");
             limpiarCampos();
-             // Redireccionar solo cuando los datos son válidos
-             window.location.href = 'publicaciones.html';
+            mostrarAlertaConRetraso("Redireccionando a iniciar sesión...", "exito", 1800); // 1800 milisegundos de retraso
+
+            // Redireccionar solo cuando los datos son válidos
+            setTimeout(function() {
+                window.location.href = 'loginMaster.html';
+            }, 3200); // 3200 milisegundos de retraso (1800 + 1500 milisegundos para la alerta de redireccionamiento + 1700 milisegundos extras)
         };
         reader.readAsDataURL(file);
     }
@@ -142,11 +158,9 @@ function guardarUsuarioEnLocalStorage(usuario) {
     usuariosGuardados.push(usuario);
     localStorage.setItem('usuariosMaster', JSON.stringify(usuariosGuardados));
 
-    // Despachar evento personalizado para indicar que se ha agregado un nuevo usuario
-    const eventoUsuarioAgregado = new Event('usuarioAgregado');
+    // evento personalizado para indicar que se ha agregado un nuevo usuario
+    let eventoUsuarioAgregado = new Event('usuarioAgregado');
     document.dispatchEvent(eventoUsuarioAgregado);
 }
 
-
-    
 
