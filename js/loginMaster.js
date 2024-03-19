@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Obtener el estado de sesión almacenado en localStorage, si existe
     let sessionStatus = localStorage.getItem("sessionStatus");
-    let usuarioActual = JSON.parse(localStorage.getItem("usuarioActual"));
+    //let usuarioActual = JSON.parse(localStorage.getItem("usuarioActual"));
 
     // Ocultar el botón de cerrar sesión al principio
     if (divAlert) {
