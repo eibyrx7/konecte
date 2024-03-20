@@ -94,11 +94,13 @@ body,html {
  }
  .img-fluid {
     width: 45%;
+    height: auto;
     margin-left: 5%;
     padding: 10px;
 }
 .card-body{
     width: auto;
+    height: auto;
     display: flex;
     align-items: flex-start;
     flex-direction: column;

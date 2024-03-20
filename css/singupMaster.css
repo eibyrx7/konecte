@@ -119,7 +119,7 @@ body,html {
     content: attr(data-tooltip);
 }
 .crear {
-    font-size: 8px;
+    font-size: 14px;
 }
 .formulario {
     background-color: rgb(242, 242, 234);

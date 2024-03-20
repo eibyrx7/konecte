@@ -44,7 +44,7 @@ btnValidar.addEventListener("click", function (event) {
 
     // Expresiones regulares
     let regexNombre = /^[A-Z][a-z]+(?: [A-Z][a-z]+)*$/;
-    let regexEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+    let regexEmail = /^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$/;
     let regexTelefono = /^[1-9][0-9]*$/;
     let regexContrasena = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}$/;
 
@@ -64,7 +64,11 @@ btnValidar.addEventListener("click", function (event) {
     }
 
     if (!regexEmail.test(txtEmail.value)) {
-        errorMessage += "El email tiene un formato incorrecto. </br>";
+        if (!txtEmail.value.includes('@')) {
+            errorMessage += "Falta el símbolo @ en el email. </br>"; // Caso 1: Falta el @
+        } else {
+            errorMessage += "Falta el dominio después del @ en el email. </br>"; // Caso 2: Falta dominio
+        }
         bandera++;
     }
 
