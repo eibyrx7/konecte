@@ -13,7 +13,7 @@ btnValidar.addEventListener("click", function (event) {
     event.preventDefault();
 
     let regexNombre = /^[A-Za-z]{3,15}$/;
-    let regexEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+    let regexEmail = /^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$/;
     let regexTelefono = /^(?!.*(\d)\1{3,})[1-9][0-9]{9}$/
     let regexMensaje = /^.{1,200}$/;
 
@@ -27,7 +27,11 @@ btnValidar.addEventListener("click", function (event) {
     }
 
     if (!regexEmail.test(txtEmail.value)) {
-        errorMessage += "El email tiene un formato incorrecto. </br>";
+        if (!txtEmail.value.includes('@')) {
+            errorMessage += "Falta el símbolo @ en el email. </br>"; // Caso 1: Falta el @
+        } else {
+            errorMessage += "Falta el dominio después del @ en el email. </br>"; // Caso 2: Falta dominio
+        }
         bandera++;
     }
 
