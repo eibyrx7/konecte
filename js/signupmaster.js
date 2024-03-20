@@ -76,7 +76,7 @@ btnValidar.addEventListener("click", function (event) {
     }
 
     if (txtDomicilio.value.trim() === "") {
-        errorMessage += "La Dirección tiene un formato incorrecto. </br>";
+        errorMessage += "El domicilio tiene un formato incorrecto. </br>";
         bandera++;
     }
 
