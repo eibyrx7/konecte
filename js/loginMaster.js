@@ -89,13 +89,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Llamar a la función para mostrar el nombre del usuario cuando se cargue la página
     mostrarNombreUsuario();
+    // Llamar a la función para actualizar el botón de cerrar sesión cuando se cargue la página
+    actualizarBotonCerrarSesion();
 
     // Mostrar u ocultar el botón de cerrar sesión según el estado de la sesión
-    if (sessionStatus === "iniciada" && btnCerrarSesion) {
-        btnCerrarSesion.style.display = "block";
-    } else if (btnCerrarSesion) {
-        btnCerrarSesion.style.display = "none";
+    function actualizarBotonCerrarSesion() {
+        
+        //mostrar y ocultar el crea tu anuncio
+        let creaTuAnuncio = document.getElementById("creaTuAnuncio");
+        if (sessionStatus === "iniciada" && creaTuAnuncio) {
+            creaTuAnuncio.style.display = "none"; // Ocultar el enlace si la sesión está iniciada
+        } else if (creaTuAnuncio) {
+            creaTuAnuncio.style.display = "block"; // Mostrar el enlace si la sesión está cerrada
+        }
+        
+        //mostrar y ocultar el boton cerrar sesion
+        if (sessionStatus === "iniciada" && btnCerrarSesion) {
+            btnCerrarSesion.style.display = "block";
+        } else if (btnCerrarSesion) {
+            btnCerrarSesion.style.display = "none";
+        }
     }
+
 
     // Evento de clic en el botón de validar
     if (txtEmail && txtContrasena && btnValidar) {

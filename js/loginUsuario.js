@@ -89,6 +89,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Mostrar u ocultar el botón de cerrar sesión según el estado de la sesión
     function actualizarBotonCerrarSesion() {
+        
+        //mostrar y ocultar el crea tu anuncio
+        let creaTuAnuncio = document.getElementById("creaTuAnuncio");
+        if (sessionStatus === "iniciada" && creaTuAnuncio) {
+            creaTuAnuncio.style.display = "none"; // Ocultar el enlace si la sesión está iniciada
+        } else if (creaTuAnuncio) {
+            creaTuAnuncio.style.display = "block"; // Mostrar el enlace si la sesión está cerrada
+        }
+        
+        //mostrar y ocultar el boton cerrar sesion
         if (sessionStatus === "iniciada" && btnCerrarSesion) {
             btnCerrarSesion.style.display = "block";
         } else if (btnCerrarSesion) {
