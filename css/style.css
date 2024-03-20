@@ -158,7 +158,7 @@ html{
     cursor: pointer;
 }
 .navegar .logot img {
-    width: 25%;
+    width: 120px;
     transition: all, 0.3s;
 }
 

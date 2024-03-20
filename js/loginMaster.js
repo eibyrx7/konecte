@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Obtener el estado de sesión almacenado en localStorage, si existe
     let sessionStatus = localStorage.getItem("sessionStatus");
-    let usuarioActual = JSON.parse(localStorage.getItem("usuarioActual"));
+    //let usuarioActual = JSON.parse(localStorage.getItem("usuarioActual"));
 
     // Ocultar el botón de cerrar sesión al principio
     if (divAlert) {
@@ -58,9 +58,9 @@ document.addEventListener("DOMContentLoaded", function() {
     function cerrarSesion() {
         localStorage.removeItem("sessionStatus");
         localStorage.removeItem("usuarioActual");
-        localStorage.setItem("sessionStatus", "cerrada"); // Cambiar el estado de la sesión a "cerrada"
+        //localStorage.setItem("sessionStatus", "cerrada"); // Cambiar el estado de la sesión a "cerrada"
         // Redirigir a la página de inicio de sesión
-        window.location.href = 'loginMaster.html';
+        window.location.href = "loginMaster.html";
     }
 
     // Función para mostrar una alerta de éxito o error
@@ -89,16 +89,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Llamar a la función para mostrar el nombre del usuario cuando se cargue la página
     mostrarNombreUsuario();
+    // Llamar a la función para actualizar el botón de cerrar sesión cuando se cargue la página
+    actualizarBotonCerrarSesion();
 
     // Mostrar u ocultar el botón de cerrar sesión según el estado de la sesión
-    if (sessionStatus === "iniciada" && btnCerrarSesion) {
-        btnCerrarSesion.style.display = "block";
-    } else if (btnCerrarSesion) {
-        btnCerrarSesion.style.display = "none";
+    function actualizarBotonCerrarSesion() {
+        
+        //mostrar y ocultar el crea tu anuncio
+        let creaTuAnuncio = document.getElementById("creaTuAnuncio");
+        if (sessionStatus === "iniciada" && creaTuAnuncio) {
+            creaTuAnuncio.style.display = "none"; // Ocultar el enlace si la sesión está iniciada
+        } else if (creaTuAnuncio) {
+            creaTuAnuncio.style.display = "block"; // Mostrar el enlace si la sesión está cerrada
+        }
+        
+        //mostrar y ocultar el boton cerrar sesion
+        if (sessionStatus === "iniciada" && btnCerrarSesion) {
+            btnCerrarSesion.style.display = "block";
+        } else if (btnCerrarSesion) {
+            btnCerrarSesion.style.display = "none";
+        }
     }
 
+
     // Evento de clic en el botón de validar
-    if (btnValidar) {
+    if (txtEmail && txtContrasena && btnValidar) {
         btnValidar.addEventListener("click", function (event) {
             event.preventDefault(); // Evitar que se envíe el formulario automáticamente
 

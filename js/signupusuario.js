@@ -9,14 +9,20 @@ let txtContrasenaConfirma = document.getElementById("txtContrasenaConfirma");
 // Ocultar el div de alerta al principio
 divAlert.style.display = "none";
 
-//funcion de limpiar campos
+// Función para limpiar campos
 function limpiarCampos() {
     txtnombre.value = "";
     txtTelefono.value = "";
     txtEmail.value = "";
     txtContrasena.value = "";
     txtContrasenaConfirma.value = "";
-    
+}
+
+// Función para mostrar una alerta de éxito o error con un retraso
+function mostrarAlertaConRetraso(mensaje, tipo, delay) {
+    setTimeout(function() {
+        mostrarAlerta(mensaje, tipo);
+    }, delay);
 }
 
 // Función para mostrar una alerta de éxito o error
@@ -72,7 +78,6 @@ btnValidar.addEventListener("click", function (event) {
         bandera++;
     }
 
-
     // Mostrar mensajes de error
     divAlert.innerHTML = errorMessage;
     if (errorMessage === "") {
@@ -84,28 +89,31 @@ btnValidar.addEventListener("click", function (event) {
 
     // Si no hay errores, guardar el usuario
     if (bandera <= 0) {
-    // Verificar si el correo electrónico ya está registrado
-    let usuariosGuardados = JSON.parse(localStorage.getItem('usuariosMaster')) || [];
-    let correoExistente = usuariosGuardados.some(usuarioGuardado => usuarioGuardado.email === txtEmail.value);
+        // Verificar si el correo electrónico ya está registrado
+        let usuariosGuardados = JSON.parse(localStorage.getItem('usuariosMaster')) || [];
+        let correoExistente = usuariosGuardados.some(usuarioGuardado => usuarioGuardado.email === txtEmail.value);
 
-    if (correoExistente) {
-        mostrarAlerta("El correo electrónico ya está registrado.", "error");
-    } else {
-        let usuario = {
-            nombre: `${txtnombre.value}`,
-            telefono: `${txtTelefono.value}`,
-            email: `${txtEmail.value}`,
-            contrasena: `${txtContrasena.value}`,
-        };
-        guardarUsuarioEnLocalStorage(usuario);
-        mostrarAlerta("El registro se ha guardado satisfactoriamente.", "exito");
-        limpiarCampos();
-        // Redireccionar solo cuando los datos son válidos
-        window.location.href = 'index.html';
+        if (correoExistente) {
+            mostrarAlerta("El correo electrónico ya está registrado.", "error");
+        } else {
+            let usuario = {
+                nombre: `${txtnombre.value}`,
+                telefono: `${txtTelefono.value}`,
+                email: `${txtEmail.value}`,
+                contrasena: `${txtContrasena.value}`,
+            };
+            guardarUsuarioEnLocalStorage(usuario);
+            mostrarAlertaConRetraso("El registro se ha guardado satisfactoriamente.", "exito");
+            limpiarCampos();
+            mostrarAlertaConRetraso("Redireccionando a iniciar sesión...", "exito", 1800); // 3000 milisegundos de retraso
+
+            // Redireccionar solo cuando los datos son válidos
+            setTimeout(function() {
+                window.location.href = 'loginUsuario.html';
+            }, 3200); // 3000 milisegundos de retraso (1.5 segundos para la alerta de redireccionamiento + 1.5 segundos extras)
+        }
     }
-
-       
-}});
+});
 
 // Función para guardar el usuario en el almacenamiento local
 function guardarUsuarioEnLocalStorage(usuario) {
