@@ -53,6 +53,12 @@ function mostrarAlerta(mensaje, tipo) {
 btnValidar.addEventListener("click", function (event) {
     event.preventDefault();
     
+    //Cambia la primera letra de cada nombre de minusciula a mayuscula
+    let nombreConMayusculas = txtnombre.value.toLowerCase().split(' ').map(function(palabra) {
+        return palabra.charAt(0).toUpperCase() + palabra.slice(1);
+      }).join(' ');
+      txtnombre.value = nombreConMayusculas;
+
     // Expresiones regulares
     let regexNombre = /^[A-Z][a-z]+(?: [A-Z][a-z]+)*$/;
     let regexEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
