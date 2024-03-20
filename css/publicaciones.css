@@ -74,10 +74,22 @@ body,html {
     right: 150px;
 
  }
-
-
+ .img-fluid {
+    width: 45%;
+    margin-left: 5%;
+    padding: 10px;
+}
+.card-body{
+    width: auto;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.card-text {
+}
 
 @media (max-width:900px) {
+  
     header {
         padding: 0px 30px;
     }
@@ -91,6 +103,9 @@ body,html {
         background-color: white;
         margin: 6px 0px;
     }
+    .PrincipalContainer {
+        z-index: 1;
+    }
     .nav-bar {
         height: 0px;
         position: absolute;
@@ -101,6 +116,7 @@ body,html {
         background-color: black;
         transition: 0.5s;
         overflow: hidden;
+        z-index: 2;
     } 
     .nav-bar.active {
         height: 450px;
@@ -119,7 +135,9 @@ body,html {
     .nav-bar ul li a {
         margin-bottom: 20px;
     }
-   
+    .encabezado{
+        text-align: center;
+    }
     
 
 }

@@ -17,9 +17,11 @@ header {
 }
 header .logot {
     cursor: pointer;
+  
 }
 header .logot img {
-    width: 25%;
+    max-width: 30%;
+    height: auto;
     transition: all, 0.3s;
 }
 
