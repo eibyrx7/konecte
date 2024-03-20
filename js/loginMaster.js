@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Evento de clic en el botón de validar
-    if (btnValidar) {
+    if (txtEmail && txtContrasena && btnValidar) {
         btnValidar.addEventListener("click", function (event) {
             event.preventDefault(); // Evitar que se envíe el formulario automáticamente
 
