@@ -8,13 +8,19 @@ let txtTelefono = document.getElementById("txtTelefono");
 let txtMensaje = document.getElementById("txtMensaje");
 let bandera;
 
+
 divAlert.style.display = "none";
 btnValidar.addEventListener("click", function (event) {
     event.preventDefault();
+    
+    let nombreConMayusculas = txtnombre.value.toLowerCase().split(' ').map(function(palabra) {
+        return palabra.charAt(0).toUpperCase() + palabra.slice(1);
+      }).join(' ');
+      txtnombre.value = nombreConMayusculas;
 
-    let regexNombre = /^[A-Za-z]{3,15}$/;
+    let regexNombre =  /^[A-Z][a-z]+(?: [A-Z][a-z]+)*$/;
     let regexEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
-    let regexTelefono = /^(?!.*(\d)\1{3,})[1-9][0-9]{9}$/
+    let regexTelefono = /^(?!.*(\\d)(?:.*?\\1){9,})[1-9][0-9]{9}$/
     let regexMensaje = /^.{1,200}$/;
 
     let errorMessage = ""; // Acumulador de mensajes de error
