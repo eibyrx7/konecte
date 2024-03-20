@@ -58,9 +58,9 @@ document.addEventListener("DOMContentLoaded", function() {
     function cerrarSesion() {
         localStorage.removeItem("sessionStatus");
         localStorage.removeItem("usuarioActual");
-        localStorage.setItem("sessionStatus", "cerrada"); // Cambiar el estado de la sesión a "cerrada"
+        //localStorage.setItem("sessionStatus", "cerrada"); // Cambiar el estado de la sesión a "cerrada"
         // Redirigir a la página de inicio de sesión
-        window.location.href = 'loginMaster.html';
+        window.location.href = "loginMaster.html";
     }
 
     // Función para mostrar una alerta de éxito o error

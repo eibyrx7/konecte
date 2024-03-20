@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.removeItem("usuarioActual");
         localStorage.setItem("sessionStatus", "cerrada"); // Cambiar el estado de la sesión a "cerrada"
         // Redirigir a la página de inicio de sesión
-        window.location.href = 'loginUsuario.html';
+        window.location.href = "loginUsuario.html";
     }
 
     // Función para mostrar una alerta de éxito o error
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function() {
     actualizarBotonCerrarSesion();
 
     // Evento de clic en el botón de validar
-    if (btnValidar) {
+    if (txtEmail && txtContrasena && btnValidar) {
         btnValidar.addEventListener("click", function (event) {
             event.preventDefault(); // Evitar que se envíe el formulario automáticamente
 
